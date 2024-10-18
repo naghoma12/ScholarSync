@@ -11,353 +11,359 @@
     <!-- Learn More: https://formbold.com -->
     <div class="formbold-form-wrapper">
         <img src="~/images/workflow-automation-thmb.jpeg" />
-        <form asp-controller="Applicationn" asp-action="SaveData" method="post" enctype="multipart/form-data">
-            <div class="formbold-input-wrapp formbold-mb-3">
-                <div class="section">
-                    <h1>I. Personal Data</h1>
-                    <hr />
-                </div>
+        <form aso-controller="applicationn" asp-action="SaveData" method="POST" enctype="multipart/form-data">
+        <div asp-validation-summary="All"></div>
 
-                <label for="firstname" class="formbold-form-label"> Name </label>
+        <div class="formbold-input-wrapp formbold-mb-3">
+	        <div class="section">
+		        <h1>I. Personal Data</h1>
+		        <hr/>
+	        </div>
 
-                <div>
-	                <input asp-for="FirstName" 
-	                       placeholder="First name" 
-	                       class="formbold-form-input" />
+	        <label for="firstname" class="formbold-form-label"> Name </label>
 
-
-	                <input asp-for="LastName" 
-	                       placeholder="Last name" 
-	                       class="formbold-form-input" />
-
-                </div>
-            </div>
-            <div class="formbold-input-flex">
-
-                <div class="formbold-mb-3">
-	                <label asp-for="Age" class="formbold-form-label"> </label>
-	                <input asp-for="Age" placeholder="ex:25" class="formbold-form-input" />
-                </div>
-
-                <div class="formbold-mb-3">
-	                <label asp-for="DateOfBirth" class="formbold-form-label"></label>
-	                <input asp-for="DateOfBirth" type="date" class="formbold-form-input" />
-	                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-
-                </div>
-            </div>
-
-            <div class="formbold-input-flex">
-
-	            <div class="formbold-mb-3">
-		            <label asp-for="Gender" class="formbold-form-label"></label>
-		            <select asp-for="Gender" class="formbold-form-input" asp-items="Html.GetEnumSelectList<Gender>()">
-			            <option value="">Select Gender</option> 
-		            </select>
-	            </div>
-
-	            <div class="formbold-mb-3">
-		            <label asp-for="Email" class="formbold-form-label"></label>
-		            <input asp-for="Email" class="formbold-form-input" placeholder="example@email.com" />
-	            </div>
-
-            </div>
+	        <div>
+		        <input asp-for="FirstName"
+		               placeholder="First name"
+		               class="formbold-form-input"/>
 
 
-        <div class="formbold-mb-3">
-                <label asp-for="StreetAddress" class="formbold-form-label"></label>
+		        <input asp-for="LastName"
+		               placeholder="Last name"
+		               class="formbold-form-input"/>
 
-                <input asp-for="StreetAddress" placeholder="Street address" class="formbold-form-input formbold-mb-3" />
-                <input asp-for="StreetAddressLine2" placeholder="Street address line 2" class="formbold-form-input" />
+	        </div>
+        </div>
+        <div class="formbold-input-flex">
+
+	        <div class="formbold-mb-3">
+		        <label asp-for="Age" class="formbold-form-label"> </label>
+		        <input asp-for="Age" placeholder="ex:25" class="formbold-form-input"/>
+	        </div>
+
+	        <div class="formbold-mb-3">
+		        <label asp-for="DateOfBirth" class="formbold-form-label"></label>
+		        <input asp-for="DateOfBirth" type="date" class="formbold-form-input"/>
+		        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+	        </div>
+        </div>
+
+        <div class="formbold-input-flex">
+
+	        <div class="formbold-mb-3">
+		        <label asp-for="Gender" class="formbold-form-label"></label>
+		        <select asp-for="Gender" class="formbold-form-input" asp-items="Html.GetEnumSelectList<Gender>()">
+			        <option value="">Select Gender</option>
+		        </select>
+	        </div>
+
+	        <div class="formbold-mb-3">
+		        <label asp-for="Email" class="formbold-form-label"></label>
+		        <input asp-for="Email" class="formbold-form-input" placeholder="example@email.com"/>
+	        </div>
+
         </div>
 
 
-            <div class="formbold-mb-3 formbold-input-wrapp">
-	            <label for="AreaCode" class="formbold-form-label">Phone</label>
+        <div class="formbold-mb-3">
+	        <label asp-for="StreetAddress" class="formbold-form-label"></label>
 
-	            <div>
-		            <select asp-for="AreaCode" class="formbold-form-input formbold-w-45" asp-items="Html.GetEnumSelectList<AreaCode>()">
-			            <option value="">Select Area Code</option>
-		            </select>
-
-		            <input asp-for="PhoneNumber"
-		                   placeholder="Phone number"
-		                   class="formbold-form-input" />
-	            </div>
-
-                <div class="formbold-input-flex">
-                    <div>
-	                    <label for="CountryId" class="formbold-form-label">Country Name</label>
-	                    <select asp-for="CountryId" class="formbold-form-input" asp-items="@(new SelectList(Model.Countries,"Id","Name"))">
-		                    <option value="0">Choose Country Name</option>
-	                    </select>
-                    </div>
-                    <div>
-                        <label for="city" class="formbold-form-label"> City </label>
-                        <input type="text"
-                               name="city"
-                               id="city"
-                               placeholder="ex: Cairo"
-                               class="formbold-form-input" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personal                    INFORAMATION-->
-            <div class="formbold-input-wrapp formbold-mb-3">
-                <div class="section">
-                    <h1>Academic Qualifications</h1>
-                    <hr />
-                </div>
-
-                <div class="formbold-input-flex">
-	                <div>
-                        <label for="UniversityId" class="formbold-form-label">University Name</label>
-		                <select asp-for="UniversityId"     placeholder="ex:Cairo University"
-		                        class="formbold-form-input"
-		                        asp-items="@(new SelectList(Model.Universities,"Id","Name"))">
-			                <option value="0">Choose University Name</option>
-		                </select>
-	                </div>
-
-	                <div class="formbold-mb-3">
-		                <label asp-for="Major" class="formbold-form-label">
-		                </label>
-		                <input asp-for="Major"
-		                       placeholder="ex: Computer Science"
-		                       class="formbold-form-input" />
-	                </div>
-                </div>
-
-                <div class="formbold-input-flex">
-	                <div class="formbold-mb-3">
-		                <label asp-for="GPA" class="formbold-form-label"></label>
-		                <input asp-for="GPA"
-		                       placeholder="ex: 3.3"
-		                       class="formbold-form-input" />
-	                </div>
-
-	                <div class="formbold-mb-3">
-		                <label asp-for="CurrentDegreeLevel" class="formbold-form-label">Current Degree Level:</label>
-		                <select asp-for="CurrentDegreeLevel" class="formbold-form-input">
-			                <option value="Bachelor">Bachelor</option>
-			                <option value="Master">Master</option>
-			                <option value="Doctorate">Doctorate</option>
-		                </select>
-	                </div>
-
-                </div>
-                <div class="formbold-input-flex">
-
-	                <div class="formbold-mb-3">
-		                <label asp-for="AcademicTranscripts" class="formbold-form-label">
-			                Academic Transcripts
-		                </label>
-		                <input asp-for="AcademicTranscripts" 
-		                       type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-                        <span asp-validation-for="AcademicTranscripts" class="text-danger"></span>
-
-	                </div>
-
-	                <div class="formbold-mb-3">
-		                <label asp-for="LanguageProficiencyLevel" class="formbold-form-label">
-			                Language Proficiency Level
-		                </label>
-		                <input asp-for="LanguageProficiencyLevel" 
-		                       type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-		                <span asp-validation-for="LanguageProficiencyLevel" class="text-danger"></span>
-
-	                </div>
+	        <input asp-for="StreetAddress" placeholder="Street address" class="formbold-form-input formbold-mb-3"/>
+	        <input asp-for="StreetAddressLine2" placeholder="Street address line 2" class="formbold-form-input"/>
+        </div>
 
 
-                </div>
-            </div>
+        <div class="formbold-mb-3 formbold-input-wrapp">
+	        <label for="AreaCode" class="formbold-form-label">Phone</label>
+
+	        <div>
+		        <select asp-for="AreaCode" class="formbold-form-input formbold-w-45" asp-items="Html.GetEnumSelectList<AreaCode>()">
+			        <option value="">Select Area Code</option>
+		        </select>
+
+		        <input asp-for="PhoneNumber"
+		               placeholder="Phone number"
+		               class="formbold-form-input"/>
+	        </div>
+
+	        <div class="formbold-input-flex">
+		        <div>
+			        <label for="CountryId" class="formbold-form-label">Country Name</label>
+			        <select asp-for="CountryId" class="formbold-form-input" asp-items="@(new SelectList(Model.Countries, "Id", "Name"))">
+				        <option value="0">Choose Country Name</option>
+			        </select>
+					
+
+		        </div>
+		        <div>
+			        <label for="city" class="formbold-form-label"> City </label>
+			        <input type="text"
+			               name="city"
+			               id="city"
+			               placeholder="ex: Cairo"
+			               class="formbold-form-input"/>
+		        </div>
+	        </div>
+        </div>
+
+        <!-- Personal                    INFORAMATION-->
+        <div class="formbold-input-wrapp formbold-mb-3">
+	        <div class="section">
+		        <h1>Academic Qualifications</h1>
+		        <hr/>
+	        </div>
+
+	        <div class="formbold-input-flex">
+		        <div>
+						<label for="inputState" class="formbold-form-label">University Name</label>
+			        <select asp-for="UniversityId" placeholder="ex:Cairo University"
+			                class="formbold-form-input"
+			                asp-items="@(new SelectList(Model.Universities, "Id", "Name"))">
+				        <option value="0">Choose University Name</option>
+			        </select>
+					
+
+		        </div>
+
+		        <div class="formbold-mb-3">
+			        <label asp-for="Major" class="formbold-form-label">
+			        </label>
+			        <input asp-for="Major"
+			               placeholder="ex: Computer Science"
+			               class="formbold-form-input"/>
+		        </div>
+	        </div>
+
+	        <div class="formbold-input-flex">
+		        <div class="formbold-mb-3">
+			        <label asp-for="GPA" class="formbold-form-label"></label>
+			        <input asp-for="GPA"
+			               placeholder="ex: 3.3"
+			               class="formbold-form-input"/>
+		        </div>
+
+		        <div class="formbold-mb-3">
+			        <label asp-for="CurrentDegreeLevel" class="formbold-form-label">Current Degree Level:</label>
+			        <select asp-for="CurrentDegreeLevel" class="formbold-form-input">
+				        <option value="Bachelor">Bachelor</option>
+				        <option value="Master">Master</option>
+				        <option value="Doctorate">Doctorate</option>
+			        </select>
+		        </div>
+
+	        </div>
+	        <div class="formbold-input-flex">
+
+		        <div class="formbold-mb-3">
+			        <label asp-for="AcademicTranscripts" class="formbold-form-label">
+				        Academic Transcripts
+			        </label>
+			        <input asp-for="AcademicTranscripts"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="AcademicTranscripts" class="text-danger"></span>
+
+		        </div>
+
+		        <div class="formbold-mb-3">
+			        <label asp-for="LanguageProficiencyLevel" class="formbold-form-label">
+				        Language Proficiency Level
+			        </label>
+			        <input asp-for="LanguageProficiencyLevel"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="LanguageProficiencyLevel" class="text-danger"></span>
+
+		        </div>
 
 
-            <!-- Supporting Documents:-->
-            <div class="formbold-input-wrapp formbold-mb-3">
-	            <div class="section">
-		            <h1>Supporting Documents</h1>
-		            <hr />
-	            </div>
+	        </div>
+        </div>
 
-                <div class="formbold-input-flex">
 
-	                <div class="formbold-mb-3">
-                        <label asp-for="CV" class="formbold-form-label">
-		                </label>
+        <!-- Supporting Documents:-->
+        <div class="formbold-input-wrapp formbold-mb-3">
+	        <div class="section">
+		        <h1>Supporting Documents</h1>
+		        <hr/>
+	        </div>
 
-                        <input asp-for="CV"
-                               type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-                        <span asp-validation-for="CV" class="text-danger"></span>
+	        <div class="formbold-input-flex">
 
-	                </div>
+		        <div class="formbold-mb-3">
+			        <label asp-for="CV" class="formbold-form-label">
+			        </label>
 
-	                <div class="formbold-mb-3">
-                        <label asp-for="MotivationLetter" class="formbold-form-label">
-                            Motivation letter
-                        </label>
-                        <input asp-for="MotivationLetter"
-                               type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-                        <span asp-validation-for="MotivationLetter" class="text-danger"></span>
-	                </div>
-                </div>
-                <div class="formbold-input-flex">
+			        <input asp-for="CV"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="CV" class="text-danger"></span>
 
-	                <div class="formbold-mb-3">
-                        <label asp-for="Recommendationletters" class="formbold-form-label">
-                            Recommendation letters
-                        </label>
-                        <input asp-for="Recommendationletters"
-                               type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-                        <span asp-validation-for="Recommendationletters" class="text-danger"></span>
-	                </div>
+		        </div>
 
-	                <div class="formbold-mb-3">
-                        <label asp-for="Passport" class="formbold-form-label">
-	                        Passport		                </label>
-                        <input asp-for="Passport"
-                               type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-                        <span asp-validation-for="Passport" class="text-danger"></span>
+		        <div class="formbold-mb-3">
+			        <label asp-for="MotivationLetter" class="formbold-form-label">
+				        Motivation letter
+			        </label>
+			        <input asp-for="MotivationLetter"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="MotivationLetter" class="text-danger"></span>
+		        </div>
+	        </div>
+	        <div class="formbold-input-flex">
 
-	                </div>
-                </div>
-            </div>
+		        <div class="formbold-mb-3">
+			        <label asp-for="Recommendationletters" class="formbold-form-label">
+				        Recommendation letters
+			        </label>
+			        <input asp-for="Recommendationletters"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="Recommendationletters" class="text-danger"></span>
+		        </div>
 
-            <!-- Culltural expreince-->
-            <div class="formbold-input-wrapp formbold-mb-3">
-                <div class="section">
-                    <h1>Culltural expreince</h1>
-                    <hr />
-                </div>
+		        <div class="formbold-mb-3">
+			        <label asp-for="Passport" class="formbold-form-label">
+				        Passport </label>
+			        <input asp-for="Passport"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="Passport" class="text-danger"></span>
 
-                <div class="formbold-input-flex">
-                    <div>
-	                    <label for="previousExperience" class="formbold-form-label">
-		                    Previous Travel or Exchange Experience
-	                    </label>
-	                    <textarea asp-for="PreviousTravelExperience"
+		        </div>
+	        </div>
+        </div>
+
+        <!-- Culltural expreince-->
+        <div class="formbold-input-wrapp formbold-mb-3">
+	        <div class="section">
+		        <h1>Culltural expreince</h1>
+		        <hr/>
+	        </div>
+
+	        <div class="formbold-input-flex">
+		        <div>
+			        <label for="previousExperience" class="formbold-form-label">
+				        Previous Travel or Exchange Experience
+			        </label>
+			        <textarea asp-for="PreviousTravelExperience"
               class="formbold-form-input"
               rows="5"
               cols="33"
               placeholder="Type your travel or exchange experience here..."
               required></textarea>
 
-	                    <span asp-validation-for="PreviousTravelExperience" class="text-danger"></span>
-                    </div>
-                    <div>
-	                    <label for="culturalActivities" class="formbold-form-label">
-		                    Cultural or Volunteer Activities
-	                    </label>
-	                    <textarea asp-for="CulturalActivities"
+			        <span asp-validation-for="PreviousTravelExperience" class="text-danger"></span>
+		        </div>
+		        <div>
+			        <label for="culturalActivities" class="formbold-form-label">
+				        Cultural or Volunteer Activities
+			        </label>
+			        <textarea asp-for="CulturalActivities"
               class="formbold-form-input"
               rows="5"
               cols="33"
               placeholder="Type your cultural or volunteer activities here..."
-              required></textarea>  
+              required></textarea>
 
-	                    <span asp-validation-for="CulturalActivities" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
+			        <span asp-validation-for="CulturalActivities" class="text-danger"></span>
+		        </div>
+	        </div>
+        </div>
 
-            <!--Personal goal-->
-            <div class="formbold-input-wrapp formbold-mb-3">
-                <div class="section">
-                    <h1>Personal goal</h1>
-                    <hr />
-                </div>
+        <!--Personal goal-->
+        <div class="formbold-input-wrapp formbold-mb-3">
+	        <div class="section">
+		        <h1>Personal goal</h1>
+		        <hr/>
+	        </div>
 
-                <div class="formbold-input-flex">
-                    <div>
-	                   <label asp-for="AcademicGoals" class="formbold-form-label">
-        Academic Goals
-    </label>
-    <textarea asp-for="AcademicGoals"
-              class="formbold-form-input"
-              rows="5"
-              cols="33"
-              placeholder="Describe what you hope to achieve through the program (e.g., acquiring new skills)."
-              required></textarea> 
-    
-    <span asp-validation-for="AcademicGoals" class="text-danger"></span>
-
-	                    <span asp-validation-for="AcademicGoals" class="text-danger"></span>
-                    </div>
-                    <div>
-                        <label asp-for="PersonalGoals" class="formbold-form-label">Personal Goals
-	                    </label>
-                        <textarea asp-for="PersonalGoals"
+	        <div class="formbold-input-flex">
+		        <div>
+			        <label asp-for="AcademicGoals" class="formbold-form-label">
+				        Academic Goals
+			        </label>
+			        <textarea asp-for="AcademicGoals"
               class="formbold-form-input"
               rows="5"
               cols="33"
               placeholder="Describe what you hope to achieve through the program (e.g., acquiring new skills)."
               required></textarea>
 
-                        <span asp-validation-for="PersonalGoals" class="text-danger"></span>
+			        <span asp-validation-for="AcademicGoals" class="text-danger"></span>
+
+			        <span asp-validation-for="AcademicGoals" class="text-danger"></span>
+		        </div>
+		        <div>
+			        <label asp-for="PersonalGoals" class="formbold-form-label">Personal Goals
+			        </label>
+			        <textarea asp-for="PersonalGoals"
+              class="formbold-form-input"
+              rows="5"
+              cols="33"
+              placeholder="Describe what you hope to achieve through the program (e.g., acquiring new skills)."
+              required></textarea>
+
+			        <span asp-validation-for="PersonalGoals" class="text-danger"></span>
 
 
-                    </div>
-                </div>
-            </div>
+		        </div>
+	        </div>
+        </div>
 
-            <!--Funding  -->
-            <div class="formbold-input-wrapp formbold-mb-3">
-                <div class="section">
-                    <h1>Funding</h1>
-                    <hr />
-                </div>
-                <div class="formbold-input-flex">
+        <!--Funding  -->
+        <div class="formbold-input-wrapp formbold-mb-3">
+	        <div class="section">
+		        <h1>Funding</h1>
+		        <hr/>
+	        </div>
+	        <div class="formbold-input-flex">
 
-	                <div class="formbold-mb-3">
+		        <div class="formbold-mb-3">
 
-                        <label asp-for="ProofOfFinancialAbility" class="formbold-form-label">
-			                Proof of Financial Ability
-		                </label>
-                        <input asp-for="ProofOfFinancialAbility"
-		                       type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-                        <span asp-validation-for="ProofOfFinancialAbility" class="text-danger"></span>
+			        <label asp-for="ProofOfFinancialAbility" class="formbold-form-label">
+				        Proof of Financial Ability
+			        </label>
+			        <input asp-for="ProofOfFinancialAbility"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="ProofOfFinancialAbility" class="text-danger"></span>
 
-	                </div>
-	                <div class="formbold-mb-3">
-                        <label asp-for="FundingSources" class="formbold-form-label">
-	                        Funding Sources		                </label>
-                        <input asp-for="FundingSources"
-		                       type="file" 
-		                       class="formbold-form-input formbold-form-file" />
-                        <span asp-validation-for="FundingSources" class="text-danger"></span>
+		        </div>
+		        <div class="formbold-mb-3">
+			        <label asp-for="FundingSources" class="formbold-form-label">
+				        Funding Sources </label>
+			        <input asp-for="FundingSources"
+			               type="file"
+			               class="formbold-form-input formbold-form-file"/>
+			        <span asp-validation-for="FundingSources" class="text-danger"></span>
 
-	                </div>
-                </div>
+		        </div>
+	        </div>
 
 
-            </div>
-            <div class="formbold-input-wrapp formbold-mb-3">
-                <div class="section">
-                    <h1>Health Insurance</h1>
-                    <hr />
-                </div>
-                <!-- 7. Health Insurance:  -->
-                <div class="formbold-mb-3">
-                    <label asp-for="ProofOfHealthInsurance" class="formbold-form-label">
-	                    Proof of Health Insurance
-                    </label>
-                    <input asp-for="ProofOfHealthInsurance"
-	                       type="file" 
-	                       class="formbold-form-input formbold-form-file" />
-                    <span asp-validation-for="ProofOfHealthInsurance" class="text-danger"></span>
+        </div>
+        <div class="formbold-input-wrapp formbold-mb-3">
+	        <div class="section">
+		        <h1>Health Insurance</h1>
+		        <hr/>
+	        </div>
+	        <!-- 7. Health Insurance:  -->
+	        <div class="formbold-mb-3">
+		        <label asp-for="ProofOfHealthInsurance" class="formbold-form-label">
+			        Proof of Health Insurance
+		        </label>
+		        <input asp-for="ProofOfHealthInsurance"
+		               type="file"
+		               class="formbold-form-input formbold-form-file"/>
+		        <span asp-validation-for="ProofOfHealthInsurance" class="text-danger"></span>
 
-                </div>
-            </div>
+	        </div>
+        </div>
 
-            @*<div class="formbold-checkbox-wrapper">
+        @*<div class="formbold-checkbox-wrapper">
                 <label for="supportCheckbox" class="formbold-checkbox-label">
                     <div class="formbold-relative">
                         <input type="checkbox"
@@ -382,7 +388,7 @@
                 </label>
             </div>*@
 
-            <input type="submit" value="SaveData" class="btn btn-primary" />
+            <button class="formbold-btn">Submit</button>
         </form>
     </div>
 </div>
