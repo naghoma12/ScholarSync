@@ -8,14 +8,14 @@ namespace ScholarSyncMVC.Models
     {
         public Scholarship? Scholarship { get; set; }
         public int? ScholarshipId { get; set; }
-        public AppUser User { get; set; }
+        /*public AppUser User { get; set; }
 
         //the default in identity for id datatype "string"
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
 
         public string Status { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; }*/
 
 
         // Personal Details
@@ -43,7 +43,6 @@ namespace ScholarSyncMVC.Models
         // Academic Qualifications
 
         // unversity mmkn downlist w major
-        public string UniversityName { get; set; }
         public string Major { get; set; }
         public decimal GPA { get; set; }
         // m4 3arfa
@@ -83,10 +82,10 @@ namespace ScholarSyncMVC.Models
         public string Passport_FileName { get; set; }
 
 
+		//Add-Migration RemoveColumnFromApplication3
 
-
-        // Cultural Experience
-        public string? PreviousTravelExperience { get; set; }
+		// Cultural Experience
+		public string? PreviousTravelExperience { get; set; }
         public string? CulturalActivities { get; set; }
 
         // Goals

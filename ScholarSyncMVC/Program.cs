@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using ScholarSyncMVC.Data;
 using ScholarSyncMVC.Helper;
+using ScholarSyncMVC.map_application;
 using ScholarSyncMVC.Models;
 using ScholarSyncMVC.Repository;
 using ScholarSyncMVC.Repository.Contract;
@@ -19,10 +20,12 @@ namespace ScholarSyncMVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+           // builder.Services.AddAutoMapper(typeof(ApplicationMappingProfile));
 
 
-            //Context Services
-            builder.Services.AddDbContext<ScholarSyncConext>(options => options.UseSqlServer
+
+			//Context Services
+			builder.Services.AddDbContext<ScholarSyncConext>(options => options.UseSqlServer
             (builder.Configuration.GetConnectionString("conn")));
 
             //Identity Services 

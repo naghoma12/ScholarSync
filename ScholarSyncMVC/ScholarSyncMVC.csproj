@@ -22,10 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Filespath\" />
     <Folder Include="wwwroot\Uploads\category\" />
     <Folder Include="wwwroot\Uploads\country\" />
     <Folder Include="wwwroot\Uploads\department\" />
+    <Folder Include="wwwroot\Uploads\Filespath\" />
     <Folder Include="wwwroot\Uploads\scholarship\" />
   </ItemGroup>
 

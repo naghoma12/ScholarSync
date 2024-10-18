@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScholarSyncMVC.Data;
 
@@ -11,9 +12,11 @@ using ScholarSyncMVC.Data;
 namespace ScholarSyncMVC.Data.Migrations
 {
     [DbContext(typeof(ScholarSyncConext))]
-    partial class ScholarSyncConextModelSnapshot : ModelSnapshot
+    [Migration("20241016014942_RemoveColumnFromApplication")]
+    partial class RemoveColumnFromApplication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -414,6 +417,10 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.Property<int>("UniversityId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UniversityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

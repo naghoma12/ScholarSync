@@ -44,7 +44,7 @@ namespace ScholarSyncMVC.Controllers
         public IActionResult Index()
         {
 
-            return View();
+            return Content("done");
         }
 
         public async Task<IActionResult> SaveData()
@@ -86,7 +86,7 @@ namespace ScholarSyncMVC.Controllers
                     if (applicationnVM.AcademicTranscripts != null)
                     {
                         applicationnVM.AcademicTranscripts_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.AcademicTranscripts, "academic_transcripts");
+                            DocumentSetting.UploadFile(applicationnVM.AcademicTranscripts, "Filespath");
                         AppMapped.AcademicTranscripts_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.AcademicTranscripts_FileName);
 
@@ -96,11 +96,12 @@ namespace ScholarSyncMVC.Controllers
                         ModelState.AddModelError("Filepath", "Please Enter File");
                     }
 
+
                     if (applicationnVM.LanguageProficiencyLevel != null)
                     {
 
                         applicationnVM.LanguageProficiencyLevel_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.LanguageProficiencyLevel, "language_proficiency");
+                            DocumentSetting.UploadFile(applicationnVM.LanguageProficiencyLevel, "Filespath");
                         AppMapped.LanguageProficiencyLevel_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.LanguageProficiencyLevel_FileName);
                     }
@@ -113,7 +114,7 @@ namespace ScholarSyncMVC.Controllers
                     {
 
 
-                        applicationnVM.CV_FileName = DocumentSetting.UploadFile(applicationnVM.CV, "cv");
+                        applicationnVM.CV_FileName = DocumentSetting.UploadFile(applicationnVM.CV, "Filespath");
                         AppMapped.CV_FilePath = Path.Combine(_environment.ContentRootPath, "wwwroot\\Filespath",
                             AppMapped.CV_FileName);
                     }
@@ -127,7 +128,7 @@ namespace ScholarSyncMVC.Controllers
 
 
                         applicationnVM.MotivationLetter_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.MotivationLetter, "motivation_letters");
+                            DocumentSetting.UploadFile(applicationnVM.MotivationLetter, "Filespath");
                         AppMapped.MotivationLetter_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.MotivationLetter_FileName);
                     }
@@ -142,7 +143,7 @@ namespace ScholarSyncMVC.Controllers
 
 
                         applicationnVM.Recommendationletters_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.Recommendationletters, "recommendation_letters");
+                            DocumentSetting.UploadFile(applicationnVM.Recommendationletters, "Filespath");
                         AppMapped.Recommendationletters_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.Recommendationletters_FileName);
                     }
@@ -157,7 +158,7 @@ namespace ScholarSyncMVC.Controllers
 
 
                         applicationnVM.Passport_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.Passport, "Passport");
+                            DocumentSetting.UploadFile(applicationnVM.Passport, "Filespath");
                         AppMapped.Passport_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.Passport_FileName);
                     }
@@ -172,7 +173,7 @@ namespace ScholarSyncMVC.Controllers
 
 
                         applicationnVM.ProofOfFinancialAbility_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.ProofOfFinancialAbility, "financial_proof");
+                            DocumentSetting.UploadFile(applicationnVM.ProofOfFinancialAbility, "Filespath");
                         AppMapped.ProofOfFinancialAbility_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.ProofOfFinancialAbility_FileName);
                     }
@@ -187,7 +188,7 @@ namespace ScholarSyncMVC.Controllers
 
 
                         applicationnVM.FundingSources_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.FundingSources, "funding_sources");
+                            DocumentSetting.UploadFile(applicationnVM.FundingSources, "Filespath");
                         AppMapped.FundingSources_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.FundingSources_FileName);
                     }
@@ -200,7 +201,7 @@ namespace ScholarSyncMVC.Controllers
                     {
 
                         applicationnVM.ProofOfHealthInsurance_FileName =
-                            DocumentSetting.UploadFile(applicationnVM.ProofOfHealthInsurance, "health_insurance");
+                            DocumentSetting.UploadFile(applicationnVM.ProofOfHealthInsurance, "Filespath");
                         AppMapped.ProofOfHealthInsurance_FilePath = Path.Combine(_environment.ContentRootPath,
                             "wwwroot\\Filespath", AppMapped.ProofOfHealthInsurance_FileName);
                     }
@@ -212,7 +213,6 @@ namespace ScholarSyncMVC.Controllers
                     #endregion
 
 
-                    // Add application to database (assuming _application is the repository)
 
                     _applicationn.Add(AppMapped);
 
@@ -227,7 +227,8 @@ namespace ScholarSyncMVC.Controllers
                         TempData["message"] = "Failed Sent Operation";
                     }
 
-                    return RedirectToAction(nameof(Index));
+                    return Content("kkk");
+                    //   return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
                 {
