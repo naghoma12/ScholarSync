@@ -8,7 +8,7 @@ using ScholarSyncMVC.ViewModels;
 
 namespace ScholarSyncMVC.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
+ //   [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
     public class DepartmentController : Controller
     {
         private readonly IGenericRepository<Department> _department;

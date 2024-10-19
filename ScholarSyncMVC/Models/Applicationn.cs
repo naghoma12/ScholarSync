@@ -6,8 +6,8 @@ namespace ScholarSyncMVC.Models
 {
     public class Applicationn:BaseEntity
     {
-        public Scholarship? Scholarship { get; set; }
-        public int? ScholarshipId { get; set; }
+    //    public Scholarship? Scholarship { get; set; }
+      //  public int? ScholarshipId { get; set; }
         /*public AppUser User { get; set; }
 
         //the default in identity for id datatype "string"
@@ -62,24 +62,24 @@ namespace ScholarSyncMVC.Models
 
         // Supporting Documents
         //public IFormFile CV { get; set; }
-        public string CV_FilePath { get; set; }
-        public string CV_FileName { get; set; }
+        public string? CV_FilePath { get; set; }
+        public string? CV_FileName { get; set; }
 
 
         //public IFormFile MotivationLetter { get; set; }
-        public string MotivationLetter_FilePath { get; set; }
-        public string MotivationLetter_FileName { get; set; }
+        public string? MotivationLetter_FilePath { get; set; }
+        public string? MotivationLetter_FileName { get; set; }
 
 
         //public IFormFile Recommendationletters { get; set; }
-        public string Recommendationletters_FilePath { get; set; }
-        public string Recommendationletters_FileName { get; set; }
+        public string? Recommendationletters_FilePath { get; set; }
+        public string? Recommendationletters_FileName { get; set; }
 
 
 
         //public IFormFile Passport { get; set; }
-        public string Passport_FilePath { get; set; }
-        public string Passport_FileName { get; set; }
+        public string? Passport_FilePath { get; set; }
+        public string? Passport_FileName { get; set; }
 
 
 		//Add-Migration RemoveColumnFromApplication3
@@ -94,20 +94,20 @@ namespace ScholarSyncMVC.Models
 
         // Funding
         //public IFormFile ProofOfFinancialAbility { get; set; }
-        public string ProofOfFinancialAbility_FilePath { get; set; }
-        public string ProofOfFinancialAbility_FileName { get; set; }
+        public string? ProofOfFinancialAbility_FilePath { get; set; }
+        public string? ProofOfFinancialAbility_FileName { get; set; }
 
 
         //public IFormFile FundingSources { get; set; }
-        public string FundingSources_FilePath { get; set; }
-        public string FundingSources_FileName { get; set; }
+        public string? FundingSources_FilePath { get; set; }
+        public string? FundingSources_FileName { get; set; }
 
 
 
         // Health Insurance
         //public IFormFile? ProofOfHealthInsurance { get; set; }
-        public string ProofOfHealthInsurance_FilePath { get; set; }
-        public string ProofOfHealthInsurance_FileName { get; set; }
+        public string? ProofOfHealthInsurance_FilePath { get; set; }
+        public string? ProofOfHealthInsurance_FileName { get; set; }
 
 
 
@@ -122,9 +122,9 @@ namespace ScholarSyncMVC.Models
         [ForeignKey(nameof(Country))]
         public int CountryId { get; set; }
 
-        public Department Department { get; set; }
-        [ForeignKey(nameof(Department))]
-        public int DepartmentId { get; set; }
+      //  public Department Department { get; set; }
+        // [ForeignKey(nameof(Department))]
+        // public int DepartmentId { get; set; }
 
     }
 }

@@ -17,7 +17,7 @@ namespace ScholarSyncMVC.Controllers
         private readonly IMapper _mapper;
         private readonly IGenericRepository<University> _university;
         private readonly IGenericRepository<Country> _country;
-        private readonly IGenericRepository<Department> _department;
+        //private readonly IGenericRepository<Department> _department;
         private readonly IGenericRepository<Applicationn> _applicationn;
         private readonly ILogger<ApplicationnController> _logger;
 
@@ -27,14 +27,14 @@ namespace ScholarSyncMVC.Controllers
         public ApplicationnController(IGenericRepository<Applicationn> applicationn, IScholarship scholarship,
             IMapper mapper,
             IGenericRepository<University> university, IGenericRepository<Country> country
-            , IGenericRepository<Department> department, IWebHostEnvironment environment, ILogger<ApplicationnController> logger)
+            , IWebHostEnvironment environment, ILogger<ApplicationnController> logger)
         {
             _applicationn = applicationn;
             _scholarship = scholarship;
             _mapper = mapper;
             _university = university;
             _country = country;
-            _department = department;
+            //_department = department;
             _environment = environment;
             _logger = logger;
 
@@ -44,7 +44,7 @@ namespace ScholarSyncMVC.Controllers
         public IActionResult Index()
         {
 
-            return Content("done");
+            return View();
         }
 
         public async Task<IActionResult> SaveData()
@@ -69,7 +69,6 @@ namespace ScholarSyncMVC.Controllers
             {
                 try
                 {
-                    var AppMapped = _mapper.Map<applicationnVM, Applicationn>(applicationnVM);
 
                     #region IFELSe
 
@@ -83,7 +82,9 @@ namespace ScholarSyncMVC.Controllers
                     applicationnVM.ProofOfFinancialAbility_FileName = applicationnVM.ProofOfFinancialAbility?.FileName;
                     applicationnVM.FundingSources_FileName = applicationnVM.FundingSources?.FileName;
                     applicationnVM.ProofOfHealthInsurance_FileName = applicationnVM.ProofOfHealthInsurance?.FileName;
-                    if (applicationnVM.AcademicTranscripts != null)
+                    var AppMapped = _mapper.Map<applicationnVM, Applicationn>(applicationnVM);
+
+					if (applicationnVM.AcademicTranscripts != null)
                     {
                         applicationnVM.AcademicTranscripts_FileName =
                             DocumentSetting.UploadFile(applicationnVM.AcademicTranscripts, "Filespath");
@@ -210,11 +211,11 @@ namespace ScholarSyncMVC.Controllers
                         ModelState.AddModelError("Filepath", "Please Enter File");
                     }
 
-                    #endregion
+					#endregion
 
 
 
-                    _applicationn.Add(AppMapped);
+					_applicationn.Add(AppMapped);
 
                     var count = _applicationn.Complet();
 
@@ -227,8 +228,8 @@ namespace ScholarSyncMVC.Controllers
                         TempData["message"] = "Failed Sent Operation";
                     }
 
-                    return Content("kkk");
-                    //   return RedirectToAction(nameof(Index));
+                   // return Content("kkk");
+                       return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
                 {

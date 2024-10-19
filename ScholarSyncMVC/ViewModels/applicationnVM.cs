@@ -39,8 +39,8 @@ namespace ScholarSyncMVC.ViewModels
 
     public class applicationnVM
     {
-        public Scholarship? Scholarship { get; set; }
-        public int? ScholarshipId { get; set; }
+       // public Scholarship? Scholarship { get; set; }
+        // public int? ScholarshipId { get; set; }
         /*public AppUser User { get; set; }
 
         //the default in identity for id datatype "string"
@@ -78,13 +78,13 @@ namespace ScholarSyncMVC.ViewModels
         public decimal GPA { get; set; }
         // m4 3arfa
         public string CurrentDegreeLevel { get; set; }
-         public IFormFile? AcademicTranscripts { get; set; }
+         public IFormFile AcademicTranscripts { get; set; }
 
         public string? AcademicTranscripts_FilePath { get; set; }
         public string? AcademicTranscripts_FileName { get; set; }
 
 
-        public IFormFile? LanguageProficiencyLevel { get; set; }
+        public IFormFile LanguageProficiencyLevel { get; set; }
         public string? LanguageProficiencyLevel_FilePath { get; set; }
         public string? LanguageProficiencyLevel_FileName { get; set; }
 
@@ -148,11 +148,11 @@ namespace ScholarSyncMVC.ViewModels
         public int UniversityId { get; set; }
         public Country? Country { get; set; }
         public int CountryId { get; set; }
-        public Department? Department { get; set; }
-        public int DepartmentId { get; set; }
+      //  public Department? Department { get; set; }
+       // public int DepartmentId { get; set; }
 
         public IEnumerable<Country> Countries { get; set; } = new List<Country>();
-        public IEnumerable<Department> Departments { get; set; } = new List<Department>();
+       // public IEnumerable<Department> Departments { get; set; } = new List<Department>();
         public IEnumerable<University> Universities { get; set; } = new List<University>();
 
     }

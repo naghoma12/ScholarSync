@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScholarSyncMVC.Data;
 
 #nullable disable
 
-namespace ScholarSyncMVC.Data.Migrations
+namespace ScholarSyncMVC.Migrations
 {
     [DbContext(typeof(ScholarSyncConext))]
-    [Migration("20241015214658_init")]
-    partial class init
+    partial class ScholarSyncConextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -284,11 +281,9 @@ namespace ScholarSyncMVC.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CV_FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CV_FilePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -308,14 +303,8 @@ namespace ScholarSyncMVC.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("DepartmentId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -326,11 +315,9 @@ namespace ScholarSyncMVC.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FundingSources_FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FundingSources_FilePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("GPA")
@@ -359,19 +346,15 @@ namespace ScholarSyncMVC.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MotivationLetter_FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MotivationLetter_FilePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Passport_FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Passport_FilePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PersonalGoals")
@@ -385,34 +368,21 @@ namespace ScholarSyncMVC.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProofOfFinancialAbility_FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProofOfFinancialAbility_FilePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProofOfHealthInsurance_FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProofOfHealthInsurance_FilePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Recommendationletters_FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Recommendationletters_FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ScholarshipId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetAddress")
@@ -425,25 +395,11 @@ namespace ScholarSyncMVC.Data.Migrations
                     b.Property<int>("UniversityId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UniversityName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
 
-                    b.HasIndex("DepartmentId");
-
-                    b.HasIndex("ScholarshipId");
-
                     b.HasIndex("UniversityId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Applications");
                 });
@@ -790,37 +746,15 @@ namespace ScholarSyncMVC.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ScholarSyncMVC.Models.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ScholarSyncMVC.Models.Scholarship", "Scholarship")
-                        .WithMany()
-                        .HasForeignKey("ScholarshipId");
-
                     b.HasOne("ScholarSyncMVC.Models.University", "University")
                         .WithMany()
                         .HasForeignKey("UniversityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ScholarSyncMVC.Models.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Country");
 
-                    b.Navigation("Department");
-
-                    b.Navigation("Scholarship");
-
                     b.Navigation("University");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.Requirements", b =>

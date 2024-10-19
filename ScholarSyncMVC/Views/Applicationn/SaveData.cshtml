@@ -53,7 +53,7 @@
 	        <div class="formbold-mb-3">
 		        <label asp-for="Gender" class="formbold-form-label"></label>
 		        <select asp-for="Gender" class="formbold-form-input" asp-items="Html.GetEnumSelectList<Gender>()">
-			        <option value="">Select Gender</option>
+			        <option value="0">Select Gender</option>
 		        </select>
 	        </div>
 
@@ -88,11 +88,11 @@
 
 	        <div class="formbold-input-flex">
 		        <div>
-			        <label for="CountryId" class="formbold-form-label">Country Name</label>
+			        <label asp-for="CountryId" class="formbold-form-label">Country Name</label>
 			        <select asp-for="CountryId" class="formbold-form-input" asp-items="@(new SelectList(Model.Countries, "Id", "Name"))">
-				        <option value="0">Choose Country Name</option>
+				        <option value="">Choose Country Name</option>
 			        </select>
-					
+	
 
 		        </div>
 		        <div>
@@ -130,6 +130,9 @@
 			        <input asp-for="Major"
 			               placeholder="ex: Computer Science"
 			               class="formbold-form-input"/>
+					
+			       
+
 		        </div>
 	        </div>
 
