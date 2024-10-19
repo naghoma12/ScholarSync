@@ -1,0 +1,340 @@
+﻿@model ScholarshipDetailsVM
+
+    <style>
+        body {
+            font-weight: 500;
+            font-family: 'Reem Kufi', sans-serif;
+            color: black
+        }
+        .h1{
+            color: black
+        }
+
+    .align-right {
+        text-align: right;
+        
+    }
+
+    .align-right-list {
+        direction: rtl; /* This moves the bullets and text to the right */
+         /* Ensures the text itself is aligned properly inside */
+    }
+
+   
+    /* Male and female symbols */
+    </style>
+    <section class="hero-wrap hero-wrap-2"
+             style="
+        background-image: url('/Uploads/scholarship/s1.jfif');
+      ">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2">
+                            <a href="home.html">الرئيسية <i class="fa fa-chevron-right"></i></a>
+                        </span>
+                        <span>المنح الدراسية <i class="fa fa-chevron-right"></i></span>
+                    </p>
+                    <h1 class="mb-0 bread">تفاصيل المنحة</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- <section class="">
+
+    </section> -->
+    <div class="container flex flex-col gap-2" style="background-color: #f5f5f5; padding: 30px;  width: 100%; max-width: none;">
+        <div class="md:max-w-1/2" style="text-align: right; font-size: 24px;">
+            <h1 itemprop="headline"
+                class="text-2xl md:text-4xl font-[700] mb-4 leading-10 ruqaa"
+                style="font-size: 40px; font-weight: 700;">
+                @Model.Name
+            </h1>
+        <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;">
+            
+            <p> : مقدمه من</p>
+            <p style="color:#3A6D8C">@Model.UniversityName</p>
+        </div>
+
+        </div>
+
+        <div class="flex flex-col justify-end mt-6" style="text-align: right; font-size: 24px;">
+            <!-- الأزرار الجديدة -->
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-align: right;">
+            @if(Model.EndDate > DateTime.Now)
+            {
+                <p style="color:#72BF78; padding-top: 10px ; padding-right:10px">(متاحه للتقديم)</p>
+            }
+
+                <div>
+                    <button type="button" style="background-color: #756698; width:200px; color: white; border: none; padding: 10px 20px; font-size: 18px; border-radius: 8px; cursor: pointer;">
+                        تقدم للفرصة
+                    </button>
+                </div>
+            </div>
+
+            <div style="color: red; font-size: 16px; font-weight: bolder; margin-right: 20px;">
+                <span>تاريخ انتهاء الفرصة:</span> <span>@Model.EndDate</span>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card" style="
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      max-width: 400px;
+      margin: auto 30px 20px auto;
+      text-align: right;
+      height: 300px;
+    ">
+            
+
+                    <div class="card-body">
+                        <h2 class="card-title">معايير الفرصة</h2>
+                       
+                <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;">
+                        <i class='fas fa-map-marker-alt' style='font-size:24px'></i>
+                    <h4>
+                        <strong> :مكان الفرصه  </strong>
+                    </h4>
+                    <p>@Model.CountryName </p>
+                </div>
+                <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;padding-top: 10px">
+                        <i class='fas fa-book' style='font-size:24px'></i>
+                    <h4 style="padding-right: 5px">
+                        <strong> : مجال الفرصه </strong>
+                    </h4>
+                    
+                    <p>@Model.DepartmentName </p>
+                </div>
+
+                    <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;padding-top: 10px">
+                        <i class="fa fa-usd" style="font-size:24px"></i>
+                        <h4 style="padding-right: 5px">
+                            <strong> : تكلفة الفرصه </strong>
+                        </h4>
+
+                        <p>@Model.Cost </p>
+                    </div>
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <section class="container"
+                         style="
+
+        width: 100%;
+        max-width: none;
+      ">
+
+
+                    <h1 style="
+          font-size: 40px;
+          font-weight: 900;
+          text-align: right;
+          margin-bottom: 20px;
+
+        ">
+                        وصف الفرصة
+                    </h1>
+
+                    <div class="content">
+                        <p style="
+            font-size: 18px;
+            text-align: right;
+            line-height: 1.8;
+
+          font-family: 'Reem Kufi', sans-serif;">
+                           @Model.Description
+                        </p>
+                       
+                    </div>
+            </div>
+            </section>
+
+        @if(Model.Benefits != null)
+        {
+            <section 
+                     style="
+    padding: 20px;
+    width: 100%;
+    max-width: none;
+      ">
+
+                <h1 style="
+      font-size: 40px;
+
+      font-weight: 900;
+      text-align: right;
+        ">
+                    الفوائد والمنافع
+                </h1>
+                <div class="content ">
+                    <p style="
+        font-size: 18px;
+        text-align: right;
+        line-height: 1.8;
+        padding-left: 20%;
+          ">
+                       @Model.Benefits
+                    </p>
+
+                </div>
+            </section>
+        }
+        @if (Model.requirements.Count != 0)
+        {
+            <section 
+                     style="
+  
+    padding: 20px;
+    width: 100%;
+    max-width: none;
+          ">
+
+                <h1 style="
+      font-size: 40px;
+
+      font-weight: 900;
+      text-align: right;
+            ">
+                    شروط التقديم
+                </h1>
+                <div class="content">
+                    <ul class="align-right-list">
+                        @foreach (var req in Model.requirements)
+                        {
+                            <li class="align-right" style="font-size:18px;">@req</li>
+                        }
+                    </ul>
+                </div>
+            </section>
+        }
+            
+        @if(Model.HowToApply != null)
+        {
+            <section class="container"
+                     style="
+    margin: 50px 0;
+    padding: 20px;
+    width: 100%;
+    max-width: none;
+      ">
+
+                <h1 style="
+      font-size: 40px;
+
+      font-weight: 900;
+      text-align: right;
+        ">
+                   كيفية التقديم
+                </h1>
+                <div class="content ">
+                    <p style="
+        font-size: 18px;
+        text-align: right;
+        line-height: 1.8;
+        padding-left: 20%;
+          ">
+                        @Model.HowToApply
+                    </p>
+
+                </div>
+            </section>
+        }
+       
+
+            <section class="container"
+                     style="
+    margin:  0;
+    padding: 20px;
+    width: 100%;
+    max-width: none;
+  ">
+            </section>
+        </div>
+
+        <div class="card"
+             style="
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    max-width: 400px;
+    margin: auto 30px 20px auto;
+    text-align: right;
+  ">
+            <h2 style="
+      font-size: 24px;
+    ">
+                معايير المتقدم
+            </h2>
+            <div style="
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 700;
+  ">
+
+        <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;">
+                <i class="fa fa-flag-o" style="font-size:24px"></i>
+                <h4 style="padding-right: 5px">
+            <strong> : الجنسية </strong>
+        </h4>
+        
+        @if (Model.Nationality == null)
+            {
+              
+            <p>لا يوجد جنسيه محدده</p>
+            }
+            else
+            {
+                <p>
+                    @Model.Nationality
+                </p>
+            }
+        </div>
+        <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;">
+                <i class='fas fa-birthday-cake' style='font-size:24px'></i>
+                <h4 style="padding-right: 5px">
+                <strong> : العمر </strong>
+            </h4>
+            @if(Model.MinAge == 0 && Model.MaxAge == 0)
+            {
+                <p> لا يشترط عمر معين</p>
+            }
+            else{
+            <p> من @Model.MinAge إلى @Model.MaxAge عامًا</p>
+
+            }
+        </div>
+        <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;">
+                <i class='fas fa-transgender-alt' style='font-size:30px'></i>
+                <h4 style="padding-right: 5px">
+                <strong> : الجنس </strong>
+            </h4>
+           <p>@Model.Gender </p>
+         </div>
+        <div style="text-align:right; display: flex; flex-direction: row-reverse; gap: 5px;">
+                <i class='fas fa-file-alt' style='font-size:24px'></i>
+                <h4 style="padding-right: 5px">
+                <strong> : الدرجة  </strong>
+            </h4>
+            <p>@Model.Degree </p>
+        </div>
+            </div>
+
+        </div>
+
+
+
+
+ 

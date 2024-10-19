@@ -3,9 +3,11 @@
 @{
 	ViewData["Title"] = "Requirements";
 }
+@{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-
-<div class="m-auto w-75  bg-white p-3">
+<div class="m-auto w-75  p-3">
 	@if (!string.IsNullOrEmpty(TempData["Message"] as string))
 	{
 		<div class="alert alert-primary mt-3 mb-2">

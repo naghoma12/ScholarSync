@@ -37,7 +37,7 @@ namespace ScholarSyncMVC.Repository
 
         public async Task<T?> GetAsync(int id)
         {
-            return _conext.Set<T>().FirstOrDefault(x => x.Id == id);
+            return _conext.Set<T>().FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         }
 
         public void Update(T entity)

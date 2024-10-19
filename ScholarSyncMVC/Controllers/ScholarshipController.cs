@@ -7,9 +7,11 @@ using System.Diagnostics;
 using ScholarSyncMVC.Helper;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ScholarSyncMVC.Controllers
 {
+    
     public class ScholarshipController : Controller
     {
         private readonly IScholarship _scholarship;
@@ -19,10 +21,12 @@ namespace ScholarSyncMVC.Controllers
         private readonly IGenericRepository<Department> _department;
         private readonly IGenericRepository<Category> _category;
         private readonly IWebHostEnvironment _environment;
+        private readonly IRequirement _requirement;
 
-		public ScholarshipController(IScholarship scholarship , IMapper mapper,
+        public ScholarshipController(IScholarship scholarship , IMapper mapper,
             IGenericRepository<University> university, IGenericRepository<Country> country
-            ,IGenericRepository<Department> department , IGenericRepository<Category> category, IWebHostEnvironment environment)
+            ,IGenericRepository<Department> department , IGenericRepository<Category> category, 
+            IWebHostEnvironment environment , IRequirement requirement)
         {
             _scholarship = scholarship;
             _mapper = mapper;
@@ -31,8 +35,9 @@ namespace ScholarSyncMVC.Controllers
             _department = department;
             _category = category;
             _environment = environment;
-
+            _requirement = requirement;
         }
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public async Task<IActionResult> Index()
         {
             var list = await _scholarship.GetAllWithTables();
@@ -40,7 +45,7 @@ namespace ScholarSyncMVC.Controllers
             { return NotFound(); }
             return View(list);
         }
-
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public async Task<IActionResult> Details(int id)
         {
             var item = await _scholarship.GetByIdInclude(id);
@@ -48,7 +53,7 @@ namespace ScholarSyncMVC.Controllers
             var itemMapped = _mapper.Map<Scholarship, ScholarshipVM>(item);
             return View(itemMapped);
         }
-
+      //  [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -118,7 +123,7 @@ namespace ScholarSyncMVC.Controllers
 	        return View(scholarshipVM);
         }
 
-
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public async Task<IActionResult> Edit(int id)
         {
             var UniList = await _university.GetAll();
@@ -174,7 +179,7 @@ namespace ScholarSyncMVC.Controllers
             return View(scholarshipVM);
         }
 
-
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public async Task<IActionResult> Delete(int id)
         {
 			var item = await _scholarship.GetByIdInclude(id);
@@ -233,7 +238,7 @@ namespace ScholarSyncMVC.Controllers
             return View(paginatedList);
 
         }
-
+      
         public async Task<IActionResult> viewcardExchangeprogram(int page = 1, int pageSize = 4)
         {
 
@@ -244,7 +249,7 @@ namespace ScholarSyncMVC.Controllers
                 return Content("No scholarships found.");
             }
 
-            var filteredList = list.Where(s => s.CategoryId == 2).ToList();
+            var filteredList = list.Where(s => s.CategoryId == 3).ToList();
 
             var paginatedList = filteredList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
@@ -258,6 +263,23 @@ namespace ScholarSyncMVC.Controllers
 
         }
 
-
+    [Authorize(AuthenticationSchemes = "Cookies")]
+        public async Task<IActionResult> ScholarshipDetails(int id)
+        {
+            var scholarship = await _scholarship.GetByIdInclude(id);
+            if (scholarship == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var requirements = await _requirement.RequirementsOfScholarship(scholarship.Id);
+            var sclMapped = _mapper.Map<Scholarship, ScholarshipDetailsVM>(scholarship);
+            foreach (var requirement in requirements)
+            {
+                sclMapped.requirements.Add(requirement.Requirement);
+            }
+            
+            return View(sclMapped);
+            
+        }
     }
 }

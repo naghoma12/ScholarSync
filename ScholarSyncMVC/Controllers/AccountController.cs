@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
+using NuGet.Protocol.Plugins;
 using ScholarSyncMVC.Data;
 using ScholarSyncMVC.Models;
 using ScholarSyncMVC.ViewModels;
@@ -29,7 +31,7 @@ namespace ScholarSyncMVC.Controllers
         [HttpGet]
         public IActionResult Registration()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -54,7 +56,7 @@ namespace ScholarSyncMVC.Controllers
 
                 if ( user!=null)
                 { 
-                    return View(model);
+                    return PartialView(model);
                 }
 
                IdentityResult result= await userManager.CreateAsync(account,model.Password);
@@ -70,8 +72,7 @@ namespace ScholarSyncMVC.Controllers
                    await signInManager.SignInAsync(account,false);
 
 
-                    ViewBag.Message = $"{account.FirstName} {account.LastName} registered successfully. Please login.";
-                     return View();
+                     return RedirectToAction(nameof(SecurePage));
 
                 }
                 else
@@ -82,13 +83,16 @@ namespace ScholarSyncMVC.Controllers
                     }
                 }
             }
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpGet]
         public IActionResult Login() 
         {
-            return View();
+            ClaimsPrincipal claimsPrincipal = HttpContext.User;
+            if (claimsPrincipal.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
+                
+                return PartialView();
         }
 
         [HttpPost]
@@ -98,18 +102,40 @@ namespace ScholarSyncMVC.Controllers
             if (ModelState.IsValid)
             {
               AppUser user=  await userManager.FindByNameAsync(model.UserNameOrEmail);
+                var role = await userManager.GetRolesAsync(user);
                 if (user == null) 
                 { user = await userManager.FindByEmailAsync(model.UserNameOrEmail); }
 
 
                 if (user != null) 
                 {
-                 bool found= await userManager.CheckPasswordAsync(user,model.Password);
+                    var found = await signInManager.PasswordSignInAsync(user,model.Password,model.RememberMe,false);
                    
-                    if(found==true)
+                    if(found.Succeeded)
                     {
-                        signInManager.SignInAsync(user,model.RememberMe);
-                        return RedirectToAction("SecurePage");
+
+                        List<Claim>? claims = new List<Claim>()
+                    {
+                         new Claim(ClaimTypes.Name, model.UserNameOrEmail),
+                    new Claim(ClaimTypes.Role, role.FirstOrDefault())
+                    };
+
+                        ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
+                            CookieAuthenticationDefaults.AuthenticationScheme);
+
+                        AuthenticationProperties authenticationProperties = new AuthenticationProperties()
+                        {
+                            AllowRefresh = true,
+                            IsPersistent = model.RememberMe
+                        };
+
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(claimsIdentity),
+                            authenticationProperties);
+
+                        return RedirectToAction(nameof(SecurePage));
+                        
                     }
                   
                 }
@@ -117,18 +143,18 @@ namespace ScholarSyncMVC.Controllers
             }
             return View(model);
         }
-
+        
         public IActionResult LogOut()
         {
-          signInManager.SignOutAsync();
-            return RedirectToAction("Login");
+            signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
+        [Authorize(AuthenticationSchemes = "Cookies")]
         public IActionResult SecurePage()
         {
-            
-            return RedirectToAction("Index","Home");
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

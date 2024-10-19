@@ -1,0 +1,63 @@
+﻿@model IEnumerable<IdentityRole>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <partial name="Create" model="new RoleFormViewModel()"></partial>
+    <hr />
+    <h1 >All Roles</h1>
+
+    <hr />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-striped p-5">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+
+                        <td>
+                            <label class="switch switch-primary switch-pill form-control-label ">
+                                <input type="checkbox" class="switch-input form-check-input" value="on" checked>
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+
+    }
+    else
+    {
+        <div class="text-danger w-50 m-auto "> There is no roles</div>
+    }
+
+

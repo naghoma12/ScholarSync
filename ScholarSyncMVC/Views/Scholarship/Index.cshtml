@@ -2,7 +2,10 @@
 @{
 	ViewData["Title"] = "Scholarships";
 }
-<div class="m-auto w-75  bg-white p-3">
+@{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="m-auto w-75 p-3">
 	@if (!string.IsNullOrEmpty(TempData["Message"] as string))
 	{
 		<div class="alert alert-primary mt-3 mb-2">
@@ -24,7 +27,6 @@
 			<th>EndDate</th>
 			<th>Degree</th>
 			<th>Cost</th>
-			<th>Duration</th>
 			<th>Category</th>
 			<th>University</th>
 			<th>Country</th>
@@ -51,7 +53,6 @@
 				<td>@item.EndDate</td>
 				<td>@item.Degree</td>
 				<td>@item.Cost</td>
-				<td>@item.Duration</td>
 				<td>@item.Category.Name</td>
 				<td>@item.University.Name</td>
 				<td>@item.Country.Name</td>

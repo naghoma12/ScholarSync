@@ -18,10 +18,16 @@ namespace ScholarSyncMVC
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-           // builder.Services.AddAutoMapper(typeof(ApplicationMappingProfile));
+           builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+           
+            options.ExpireTimeSpan = TimeSpan.FromDays(10); // Set the cookie expiration time
+            options.SlidingExpiration = true; // Renew the cookie if the user is active
+        });
 
+            builder.Services.AddAuthorization();
+            builder.Services.AddControllersWithViews();
 
 
 			//Context Services
@@ -40,6 +46,8 @@ namespace ScholarSyncMVC
             builder.Services.AddAutoMapper(typeof(MappingConfig));
             builder.Services.AddScoped<IScholarship, ScholarshipRepository>();
             builder.Services.AddScoped<IRequirement, RequirementRepository>();
+            builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+    
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -55,14 +63,16 @@ namespace ScholarSyncMVC
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
-
+           
+           
+		app.UseAuthentication();
+			app.UseAuthorization();
+            
             app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            name: "default",
+				pattern:  "{controller=Home}/{action=Index}/{id?}");
 
-            app.Run();
+			app.Run();
         }
     }
 }

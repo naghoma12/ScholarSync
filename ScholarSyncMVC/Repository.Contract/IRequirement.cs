@@ -6,5 +6,7 @@ namespace ScholarSyncMVC.Repository.Contract
 	{
 		Task<IEnumerable<Requirements>> GetRequirementsAsync();
 		Task<Requirements?> GetRequiredRequirementsAsync(int id);
-	}
+		Task<IEnumerable<Requirements>> RequirementsOfScholarship(int id);
+
+    }
 }

@@ -23,5 +23,10 @@ namespace ScholarSyncMVC.Repository
         {
             return _conext.Scholarships.Include("Category").Include("University").Include("Country").Include("Department").Where(x => x.IsDeleted == false).FirstOrDefault(x => x.Id == id);
         }
+
+        public async Task<IEnumerable<Scholarship>> GetAllInDept(int DeptId)
+        {
+            return await _conext.Scholarships.Where(x => x.IsDeleted == false && x.DepartmentId == DeptId).ToListAsync();
+        }
     }
 }

@@ -18,10 +18,7 @@ namespace ScholarSyncMVC.Data
         public DbSet<Country> Countries { get; set; }
         public DbSet<Requirements> Requirements { get; set; }
         public DbSet<Scholarship> Scholarships { get; set; }
-        public DbSet<Scholarship> UserAccount { get; set; }
-        public DbSet<AppUser> AppUsers { get; set; }
-
-
+        public DbSet<Review> Reviews { get; set; }
 
     }
 }

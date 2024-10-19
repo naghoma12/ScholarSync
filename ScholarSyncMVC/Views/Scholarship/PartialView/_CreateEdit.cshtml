@@ -2,39 +2,48 @@
 
 <div asp-validation-summary="All"></div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 ">
         <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" />
+            <label asp-for="Name" class="form-label" ></label>
+            <input asp-for="Name" class="form-control" placeholder="Enter Field Name"/>
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mt-2">
         <div class="form-group">
-            <label asp-for="Degree" class="control-label"></label>
-            <input asp-for="Degree" class="form-control" />
+            <label asp-for="Degree" class="form-label"></label>
+            <input asp-for="Degree" class="form-control" placeholder="Enter Available degree"/>
             <span asp-validation-for="Degree" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6 mt-2">
+        <div class="form-group">
+            <label asp-for="MinAge" class="form-label"></label>
+            <input  asp-for="MinAge" class="form-control" placeholder="Enter Available Min Age"/>
+            <span asp-validation-for="MinAge" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6 mt-2">
+        <div class="form-group">
+            <label asp-for="MaxAge" class="form-label"></label>
+            <input asp-for="MaxAge" class="form-control" placeholder="Enter Available Max Age" />
+            <span asp-validation-for="MaxAge" class="text-danger"></span>
         </div>
     </div>
 </div>
 
-<div class="form-group">
-    <label for="example-textarea">Description</label>
-    <textarea class="form-control" asp-for="Description" id="example-textarea" rows="4"></textarea>
-    <span asp-validation-for="Description" class="text-danger"></span>
-</div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mt-2">
         <div class="form-group">
-            <label asp-for="StartDate" class="control-label"></label>
+            <label asp-for="StartDate" class="form-label"></label>
             <input asp-for="StartDate" class="form-control" type="date" />
             <span asp-validation-for="StartDate" class="text-danger"></span>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mt-2">
         <div class="form-group">
-            <label asp-for="EndDate" class="control-label"></label>
+            <label asp-for="EndDate" class="form-label"></label>
             <input asp-for="EndDate" class="form-control" type="date" />
             <span asp-validation-for="EndDate" class="text-danger"></span>
         </div>
@@ -42,35 +51,47 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mt-2">
         <div class="form-group">
-            <label asp-for="Cost" class="control-label"></label>
-            <input asp-for="Cost" class="form-control" />
+            <label asp-for="Cost" class="form-label"></label>
+            <input asp-for="Cost" class="form-control" placeholder="Enter Field Cost" />
             <span asp-validation-for="Cost" class="text-danger"></span>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mt-2">
         <div class="form-group">
-            <label asp-for="Duration" class="control-label"></label>
-            <input asp-for="Duration" class="form-control" />
-            <span asp-validation-for="Duration" class="text-danger"></span>
+            <label asp-for="Nationality" class="form-label"></label>
+            <input asp-for="Nationality" class="form-control" placeholder="Enter Available Nationality" />
+            <span asp-validation-for="Nationality" class="text-danger"></span>
         </div>
+    </div>
+    <div class="col-md-6 mt-2">
+        <div class="form-group">
+            <label asp-for="Gender" class="form-label"></label>
+            <input asp-for="Gender" class="form-control" placeholder="Enter Available Gender" />
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6 mt-2">
+        <label class="form-label">Photo</label>
+        <input asp-for="PhotoFile" class="form-control form-control-lg" type="file" placeholder="صوره" id="formFile" />
+        <span asp-validation-for="PhotoFile" class="text-danger"></span>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mt-2">
         <div class="form-group">
-            <label for="inputState">Category Name</label>
-            <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(Model.Categories,"Id","Name"))">
+            <label for="inputState" class="form-label">Category Name</label>
+            <select asp-for="CategoryId" class="form-select" asp-items="@(new SelectList(Model.Categories,"Id","Name"))">
                 <option value="0">Choose Category Name</option>
             </select>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mt-2">
         <div class="form-group">
-            <label for="inputState">University Name</label>
-            <select asp-for="UniversityId" class="form-control" asp-items="@(new SelectList(Model.Universities,"Id","Name"))">
+            <label for="inputState" class="form-label">University Name</label>
+            <select asp-for="UniversityId" class="form-select" asp-items="@(new SelectList(Model.Universities,"Id","Name"))">
                 <option value="0">Choose University Name</option>
             </select>
         </div>
@@ -78,29 +99,37 @@
 </div>
 
 <div class="row">
-	<div class="col-md-6">
+    <div class="col-md-6 mt-2">
 		<div class="form-group">
-			<label for="inputState">Country Name</label>
-			<select asp-for="CountryId" class="form-control" asp-items="@(new SelectList(Model.Countries,"Id","Name"))">
+			<label for="inputState" class="form-label">Country Name</label>
+			<select asp-for="CountryId" class="form-select" asp-items="@(new SelectList(Model.Countries,"Id","Name"))">
 				<option value="0">Choose Country Name</option>
 			</select>
 		</div>
 	</div>
-	<div class="col-md-6">
-		<div class="form-group">
-			<label for="inputState">Department Name</label>
-			<select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(Model.Departments,"Id","Name"))">
-				<option value="0">Choose Department Name</option>
-			</select>
-		</div>
-	</div>
+    <div class="col-md-6 mt-2">
+        <div class="form-group">
+            <label for="inputState" class="form-label">Department Name</label>
+            <select asp-for="DepartmentId" class="form-select" asp-items="@(new SelectList(Model.Departments,"Id","Name"))">
+                <option value="0" disabled selected>Choose Department Name</option>
+            </select>
+        </div>
+    </div>
 
-	
-	<div class="col-md-6">
-		<label class="control-label fw-bold fs-4">Photo</label>
-		<input asp-for="PhotoFile" class="form-control form-control-lg" type="file" placeholder="صوره" id="formFile" />
-		<span asp-validation-for="PhotoFile" class="text-danger"></span>
-	</div>
 </div>
 
-
+<div class="form-group mt-2">
+    <label for="example-textarea" class="form-label">Description</label>
+    <textarea class="form-control" asp-for="Description" id="example-textarea" placeholder="Enter Field Description" rows="4"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="form-group mt-2">
+    <label for="example-textarea" class="form-label">How To Apply</label>
+    <textarea class="form-control" asp-for="HowToApply" id="example-textarea" placeholder="How to Apply for this field ?" rows="4"></textarea>
+    <span asp-validation-for="HowToApply" class="text-danger"></span>
+</div>
+<div class="form-group mt-2">
+    <label for="example-textarea" class="form-label">Benefits</label>
+    <textarea class="form-control" asp-for="Benefits" id="example-textarea" placeholder="What are its benefits?" rows="4"></textarea>
+    <span asp-validation-for="Benefits" class="text-danger"></span>
+</div>
