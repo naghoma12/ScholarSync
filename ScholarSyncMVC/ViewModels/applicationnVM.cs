@@ -78,13 +78,13 @@ namespace ScholarSyncMVC.ViewModels
         public decimal GPA { get; set; }
         // m4 3arfa
         public string CurrentDegreeLevel { get; set; }
-         public IFormFile AcademicTranscripts { get; set; }
+         public IFormFile? AcademicTranscripts { get; set; }
 
         public string? AcademicTranscripts_FilePath { get; set; }
         public string? AcademicTranscripts_FileName { get; set; }
 
 
-        public IFormFile LanguageProficiencyLevel { get; set; }
+        public IFormFile? LanguageProficiencyLevel { get; set; }
         public string? LanguageProficiencyLevel_FilePath { get; set; }
         public string? LanguageProficiencyLevel_FileName { get; set; }
 

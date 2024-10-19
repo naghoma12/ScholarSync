@@ -21,13 +21,12 @@
 		        <hr/>
 	        </div>
 
-	        <label for="firstname" class="formbold-form-label"> Name </label>
+	        <label for="FirstName" class="formbold-form-label"> Name </label>
 
 	        <div>
 		        <input asp-for="FirstName"
 		               placeholder="First name"
 		               class="formbold-form-input"/>
-
 
 		        <input asp-for="LastName"
 		               placeholder="Last name"
@@ -60,7 +59,7 @@
 	        </div>
 
 	        <div class="formbold-mb-3">
-		        <label asp-for="Email" class="formbold-form-label"></label>
+					<label asp-for="Email" class="formbold-form-label"></label>
 		        <input asp-for="Email" class="formbold-form-input" placeholder="example@email.com"/>
 	        </div>
 
@@ -68,7 +67,7 @@
 
 
         <div class="formbold-mb-3">
-	        <label asp-for="StreetAddress" class="formbold-form-label"></label>
+				<label asp-for="StreetAddress" class="formbold-form-label"></label>
 
 	        <input asp-for="StreetAddress" placeholder="Street address" class="formbold-form-input formbold-mb-3"/>
 	        <input asp-for="StreetAddressLine2" placeholder="Street address line 2" class="formbold-form-input"/>
@@ -83,7 +82,7 @@
 			        <option value="">Select Area Code</option>
 		        </select>
 
-		        <input asp-for="PhoneNumber"
+					<input asp-for="PhoneNumber"
 		               placeholder="Phone number"
 		               class="formbold-form-input"/>
 	        </div>
@@ -98,12 +97,11 @@
 
 		        </div>
 		        <div>
-			        <label for="city" class="formbold-form-label"> City </label>
-			        <input type="text"
-			               name="city"
-			               id="city"
-			               placeholder="ex: Cairo"
-			               class="formbold-form-input"/>
+			        <label asp-for="City" class="formbold-form-label"></label>
+			        <input asp-for="City" 
+			               placeholder="ex: Cairo" 
+			               class="formbold-form-input" />
+			        <span asp-validation-for="City" class="text-danger"></span>
 		        </div>
 	        </div>
         </div>
@@ -147,6 +145,8 @@
 		        <div class="formbold-mb-3">
 			        <label asp-for="CurrentDegreeLevel" class="formbold-form-label">Current Degree Level:</label>
 			        <select asp-for="CurrentDegreeLevel" class="formbold-form-input">
+				        <option value="">Select Degree</option>
+
 				        <option value="Bachelor">Bachelor</option>
 				        <option value="Master">Master</option>
 				        <option value="Doctorate">Doctorate</option>
@@ -246,7 +246,7 @@
 
 	        <div class="formbold-input-flex">
 		        <div>
-			        <label for="previousExperience" class="formbold-form-label">
+						<label for="PreviousTravelExperience" class="formbold-form-label">
 				        Previous Travel or Exchange Experience
 			        </label>
 			        <textarea asp-for="PreviousTravelExperience"
@@ -259,7 +259,7 @@
 			        <span asp-validation-for="PreviousTravelExperience" class="text-danger"></span>
 		        </div>
 		        <div>
-			        <label for="culturalActivities" class="formbold-form-label">
+						<label for="CulturalActivities" class="formbold-form-label">
 				        Cultural or Volunteer Activities
 			        </label>
 			        <textarea asp-for="CulturalActivities"
