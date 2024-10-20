@@ -128,7 +128,7 @@ namespace ScholarSyncMVC.Controllers
         public IActionResult SecurePage()
         {
             
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","Profile");
         }
     }
 }
