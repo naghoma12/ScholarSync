@@ -12,7 +12,7 @@ using ScholarSyncMVC.Data;
 namespace ScholarSyncMVC.Migrations
 {
     [DbContext(typeof(ScholarSyncConext))]
-    [Migration("20241019191655_all")]
+    [Migration("20241019210029_all")]
     partial class all
     {
         /// <inheritdoc />
@@ -309,6 +309,9 @@ namespace ScholarSyncMVC.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -341,10 +344,6 @@ namespace ScholarSyncMVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Major")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -401,6 +400,8 @@ namespace ScholarSyncMVC.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
+
+                    b.HasIndex("DepartmentId");
 
                     b.HasIndex("UniversityId");
 
@@ -749,6 +750,12 @@ namespace ScholarSyncMVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ScholarSyncMVC.Models.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ScholarSyncMVC.Models.University", "University")
                         .WithMany()
                         .HasForeignKey("UniversityId")
@@ -756,6 +763,8 @@ namespace ScholarSyncMVC.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+
+                    b.Navigation("Department");
 
                     b.Navigation("University");
                 });

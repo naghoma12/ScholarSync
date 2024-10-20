@@ -125,12 +125,12 @@
 		        </div>
 
 		        <div class="formbold-mb-3">
-			        <label asp-for="Major" class="formbold-form-label">
-			        </label>
-			        <input asp-for="Major"
-			               placeholder="ex: Computer Science"
-			               class="formbold-form-input"/>
-					
+			      
+			        <label for="inputState" class="formbold-form-label">Department Name</label>
+			        <select asp-for="DepartmentId" class="formbold-form-input" asp-items="@(new SelectList(Model.Departments,"Id","Name"))">
+				        <option value="0" disabled selected>Choose Department Name</option>
+			        </select>
+
 			       
 
 		        </div>

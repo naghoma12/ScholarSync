@@ -17,7 +17,7 @@ namespace ScholarSyncMVC.Controllers
         private readonly IMapper _mapper;
         private readonly IGenericRepository<University> _university;
         private readonly IGenericRepository<Country> _country;
-        //private readonly IGenericRepository<Department> _department;
+        private readonly IGenericRepository<Department> _department;
         private readonly IGenericRepository<Applicationn> _applicationn;
         private readonly ILogger<ApplicationnController> _logger;
 
@@ -27,14 +27,14 @@ namespace ScholarSyncMVC.Controllers
         public ApplicationnController(IGenericRepository<Applicationn> applicationn, IScholarship scholarship,
             IMapper mapper,
             IGenericRepository<University> university, IGenericRepository<Country> country
-            , IWebHostEnvironment environment, ILogger<ApplicationnController> logger)
+            , IWebHostEnvironment environment, IGenericRepository<Department> department ,ILogger<ApplicationnController> logger)
         {
             _applicationn = applicationn;
             _scholarship = scholarship;
             _mapper = mapper;
             _university = university;
             _country = country;
-            //_department = department;
+            _department = department;
             _environment = environment;
             _logger = logger;
 
@@ -51,13 +51,16 @@ namespace ScholarSyncMVC.Controllers
         {
             var UniList = await _university.GetAll();
             var CouList = await _country.GetAll();
+            var DepList = await _department.GetAll();
 
-            applicationnVM applicationnVM = new applicationnVM()
+			applicationnVM applicationnVM = new applicationnVM()
             {
 
                 Universities = UniList,
                 Countries = CouList,
-            };
+                Departments = DepList
+
+			};
             return View(applicationnVM);
         }
 

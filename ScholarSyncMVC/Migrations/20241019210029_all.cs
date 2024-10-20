@@ -169,7 +169,6 @@ namespace ScholarSyncMVC.Migrations
                     AreaCode = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Major = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GPA = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CurrentDegreeLevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AcademicTranscripts_FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -197,6 +196,7 @@ namespace ScholarSyncMVC.Migrations
                     AgreeTerms = table.Column<bool>(type: "bit", nullable: false),
                     UniversityId = table.Column<int>(type: "int", nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: false),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -207,6 +207,12 @@ namespace ScholarSyncMVC.Migrations
                         name: "FK_Applications_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Applications_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -414,6 +420,11 @@ namespace ScholarSyncMVC.Migrations
                 name: "IX_Applications_CountryId",
                 table: "Applications",
                 column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Applications_DepartmentId",
+                table: "Applications",
+                column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_UniversityId",

@@ -74,7 +74,7 @@ namespace ScholarSyncMVC.ViewModels
         public string City { get; set; }
 
         // Academic Qualifications// unversity mmkn downlist w major
-        public string Major { get; set; }
+       // public string Major { get; set; }
         public decimal GPA { get; set; }
         // m4 3arfa
         public string CurrentDegreeLevel { get; set; }
@@ -148,11 +148,11 @@ namespace ScholarSyncMVC.ViewModels
         public int UniversityId { get; set; }
         public Country? Country { get; set; }
         public int CountryId { get; set; }
-      //  public Department? Department { get; set; }
-       // public int DepartmentId { get; set; }
+        public Department? Department { get; set; }
+        public int DepartmentId { get; set; }
 
         public IEnumerable<Country> Countries { get; set; } = new List<Country>();
-       // public IEnumerable<Department> Departments { get; set; } = new List<Department>();
+        public IEnumerable<Department> Departments { get; set; } = new List<Department>();
         public IEnumerable<University> Universities { get; set; } = new List<University>();
 
     }

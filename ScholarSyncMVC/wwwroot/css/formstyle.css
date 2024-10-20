@@ -4,14 +4,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-img{
+img {
     width: 700px;
     height: 300px;
     display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 
@@ -122,23 +122,26 @@ select.formbold-form-input,
   margin-bottom: 10px;
 }
 .formbold-form-label2 {
-    color: #b51b1b;
-    font-size: 20px;
+    color: red;
+    font-size: 30px;
     line-height: 24px;
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    margin: auto auto;
+    text-align:center;
+    align-content:center;
+    align-items:center;
 }
 
 
 .aa {
-    font-size: 40px;
+    color: red;
+    font-size: 30px;
     line-height: 24px;
-    display: block;
-    margin: 200px 200px;
-    text-align:center;
-    display:flex;
-    align-content:center;
-   
+    display: flex;
+    margin: auto auto;
+    text-align: center;
+    align-content: center;
+    align-items: center;
 }
 .formbold-checkbox-label {
   display: flex;

@@ -37,7 +37,7 @@ namespace ScholarSyncMVC.Controllers
             _environment = environment;
             _requirement = requirement;
         }
-        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
+       // [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public async Task<IActionResult> Index()
         {
             var list = await _scholarship.GetAllWithTables();
@@ -263,7 +263,7 @@ namespace ScholarSyncMVC.Controllers
 
         }
 
-    [Authorize(AuthenticationSchemes = "Cookies")]
+   // [Authorize(AuthenticationSchemes = "Cookies")]
         public async Task<IActionResult> ScholarshipDetails(int id)
         {
             var scholarship = await _scholarship.GetByIdInclude(id);

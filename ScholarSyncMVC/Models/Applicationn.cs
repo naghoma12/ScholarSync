@@ -43,7 +43,7 @@ namespace ScholarSyncMVC.Models
         // Academic Qualifications
 
         // unversity mmkn downlist w major
-        public string Major { get; set; }
+     //   public string Major { get; set; }
         public decimal GPA { get; set; }
         // m4 3arfa
         public string CurrentDegreeLevel { get; set; }
@@ -122,9 +122,9 @@ namespace ScholarSyncMVC.Models
         [ForeignKey(nameof(Country))]
         public int CountryId { get; set; }
 
-      //  public Department Department { get; set; }
-        // [ForeignKey(nameof(Department))]
-        // public int DepartmentId { get; set; }
+        public Department Department { get; set; }
+         [ForeignKey(nameof(Department))]
+         public int DepartmentId { get; set; }
 
     }
 }
