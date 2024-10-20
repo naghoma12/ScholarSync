@@ -10,11 +10,15 @@ namespace ScholarSyncMVC.Models
         public DateTime EndDate { get; set; }
         public string Degree { get; set; }
         public Decimal Cost { get; set; }
+        public string? Nationality { get; set; }
+        public int? MinAge { get; set; }
+        public int? MaxAge { get; set; }
+        public string Gender { get; set; }
+        public string? HowToApply { get; set; }
+        public string? Benefits { get; set; }
         public string FilePath { get; set; }
 
 		public string PhotoURL { get; set; }
-
-        public string Duration { get; set; }
         public Category Category { get; set; }
         [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }

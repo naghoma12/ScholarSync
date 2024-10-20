@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "Create";
 }
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 <div class="m-auto w-75  bg-white p-5">
     <h1>Create New Department</h1>
     @if (!string.IsNullOrEmpty(TempData["Message"] as string))

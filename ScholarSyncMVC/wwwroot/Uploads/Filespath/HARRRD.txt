@@ -1,0 +1,10 @@
+https://codeforces.com/group/AlCa8GPjnJ/contest/425057/problem/C
+
+
+ for (int i = 0; i < (1 << n); ++i) {
+        res.clear();
+        for (int j = 0; j < n; ++j) {
+            if ((i >> j) & 1) {
+                res.push_back(j);
+            }
+        }

@@ -87,7 +87,7 @@
 				<div class="col-md-6 d-flex align-items-stretch ftco-animate">
 					<div class="project-wrap">
 						<a asp-controller="Scholarship"
-						   asp-action="Details"
+                           asp-action="ScholarshipDetails"
 						   asp-route-id="@scholarship.Id"
 						   class="img"
 						   style="background-image: url('@Url.Content("~/Uploads/scholarship/" + scholarship.PhotoURL)');">
@@ -96,7 +96,7 @@
 						<div class="text p-4 text-right">
 							<h3>
 								<a asp-controller="Scholarship"
-								   asp-action="Details"
+                                   asp-action="ScholarshipDetails"
 								   asp-route-id="@scholarship.Id">
 									@scholarship.Name
 								</a>

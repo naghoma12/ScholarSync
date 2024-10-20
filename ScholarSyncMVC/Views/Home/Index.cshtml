@@ -1,50 +1,25 @@
-﻿
+﻿@model HomeVM
 
 
-
-<div class="hero-wrap js-fullheight" style="background-image: url('images/منحة2.jpg');">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class=" no-gutters  slider-text js-fullheight align-items-center" data-scrollax-parent="true">
-      <div class="col-md-7 textHeader ftco-animate">
-        <h1 class="subheading">مرحبا بك فى فرصتك</h1>
-        <h1 class="mb-4">الموقع العربي الذى يمكنك من الحصول على المنح الدراسية وفرص التبادل الثقافى والاقامات</h1>
+<div class="hero-wrap js-fullheight d-flex justify-content-center align-items-center" style="background-image: url('images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight d-flex justify-content-center align-items-center" data-scrollax-parent="true">
+            <div class="col-md-7 ftco-animate">
+                <span class="subheading">مرحبا بك فى فرصتك</span>
+                <h1 class="mb-4">الموقع العربي الذى يمكنك من الحصول على المنح الدراسية وفرص التبادل الثقافى والاقامات</h1>
+                <div style="margin-left: 150px;">
+                    <p class="mb-0"><a href="#" class="btn btn-primary">المنح الدراسيه</a> <a href="#" class="btn btn-white">التبادل الثقافي</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </div>
 
 <section class="ftco-section ftco-no-pb ftco-no-pt">
    <div class="container">
       <div class="row">
          <div class="col-md-7"></div>
-         <!-- <div class="col-md-5 order-md-last">
-          <div class="login-wrap p-4 p-md-5">
-              <h3 class="mb-4">Register Now</h3>
-              <form action="#" class="signup-form">
-                 <div class="form-group">
-                    <label class="label" for="name">Full Name</label>
-                    <input type="text" class="form-control" placeholder="John Doe">
-                </div>
-                <div class="form-group">
-                    <label class="label" for="email">Email Address</label>
-                    <input type="text" class="form-control" placeholder="johndoe@gmail.com">
-                </div>
-                <div class="form-group">
-                 <label class="label" for="password">Password</label>
-                 <input id="password-field" type="password" class="form-control" placeholder="Password">
-             </div>
-             <div class="form-group">
-                 <label class="label" for="password">Confirm Password</label>
-                 <input id="password-field" type="password" class="form-control" placeholder="Confirm Password">
-             </div>
-             <div class="form-group d-flex justify-content-end mt-4">
-                 <button type="submit" class="btn btn-primary submit"><span class="fa fa-paper-plane"></span></button>
-             </div>
-         </form>
-         <p class="text-center">Already have an account? <a href="#signin">Sign In</a></p>
-     </div>
- </div> -->
 </div>
 </div>
 </section>
@@ -58,162 +33,37 @@
         </div>
     </div>
     <div class="row justify-content-center">
-     <div class="col-md-3 col-lg-2">
-        <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url(images/تكنولوجيا\ المعلومت.jpeg);">
-           <div class="text w-100 text-center">
-              <h3>تكنولوجيا المعلومات</h3>
-              <span>50 منحة</span>
-          </div>
-      </a>
-  </div>
-  <div class="col-md-3 col-lg-2">
-    <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url(images/موسيقى.jpeg);">
-       <div class="text w-100 text-center">
-          <h3>الموسيقى والفنون</h3>
-          <span>30 منحة</span>
-      </div>
-  </a>
+            @if(Model.Departments.Count != 0)
+            {
+                @foreach (var department in Model.Departments)
+                {
+
+                    <div class="col-md-3 col-lg-2">
+                        <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url(Uploads/department/@department.PhotoURL);">
+                            <div class="text w-100 text-center">
+                                <input asp-for="@department.Id" hidden />
+                                <h3>@department.Name</h3>
+                                @if (department.ScholarshipCount > 0)
+                                {
+                                    <span>@department.ScholarshipCount منحة</span>
+
+                                }
+                                else
+                                {
+                                    <span> 0 منحة</span>
+                                }
+
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+</div> 
 </div>
-<div class="col-md-3 col-lg-2">
-    <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url(images/تصوير.jpeg);">
-       <div class="text w-100 text-center">
-          <h3>التصوير الفوتوغرافي</h3>
-          <span>20 منحة</span>
-      </div>
-  </a>
-</div>
-<div class="col-md-3 col-lg-2">
-    <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url(images/تسويق.jpeg);">
-       <div class="text w-100 text-center">
-          <h3>التسويق والإدارة</h3>
-          <span>40 منحة</span>
-      </div>
-  </a>
-</div>
-<div class="col-md-3 col-lg-2">
-    <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url(images/صحة\ وعناية.jpeg);">
-       <div class="text w-100 text-center">
-          <h3>الصحة والعناية</h3>
-          <span>25 منحة</span>
-      </div>
-  </a>
-</div>
-<div class="col-md-3 col-lg-2">
-    <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url(images/أهم_وسائل_الإعلام.jpg);">
-       <div class="text w-100 text-center">
-          <h3>الإعلام والاتصال</h3>
-          <span>15 منحة</span>
-      </div>
-  </a>
-</div>
-</div>
-</div>
+
 </section>
 
 
-<!-- <section class="ftco-section bg-light">
-   <div class="container">
-      <div class="row justify-content-center pb-4">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-          	<span class="subheading">Start Learning Today</span>
-            <h2 class="mb-4">Pick Your Course</h2>
-        </div>
-    </div>
-    <div class="row">
-       <div class="col-md-4 ftco-animate">
-          <div class="project-wrap">
-             <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
-                <span class="price">Software</span>
-            </a>
-            <div class="text p-4">
-                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                <ul class="d-flex justify-content-between">
-                   <li><span class="flaticon-shower"></span>2300</li>
-                   <li class="price">$199</li>
-               </ul>
-           </div>
-       </div>
-   </div>
-   <div class="col-md-4 ftco-animate">
-      <div class="project-wrap">
-         <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
-            <span class="price">Software</span>
-        </a>
-        <div class="text p-4">
-            <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-            <p class="advisor">Advisor <span>Tony Garret</span></p>
-            <ul class="d-flex justify-content-between">
-               <li><span class="flaticon-shower"></span>2300</li>
-               <li class="price">$199</li>
-           </ul>
-       </div>
-   </div>
-</div>
-<div class="col-md-4 ftco-animate">
-  <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
-        <span class="price">Software</span>
-    </a>
-    <div class="text p-4">
-        <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-        <p class="advisor">Advisor <span>Tony Garret</span></p>
-        <ul class="d-flex justify-content-between">
-           <li><span class="flaticon-shower"></span>2300</li>
-           <li class="price">$199</li>
-       </ul>
-   </div>
-</div>
-</div>
-
-<div class="col-md-4 ftco-animate">
-  <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
-        <span class="price">Software</span>
-    </a>
-    <div class="text p-4">
-        <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-        <p class="advisor">Advisor <span>Tony Garret</span></p>
-        <ul class="d-flex justify-content-between">
-           <li><span class="flaticon-shower"></span>2300</li>
-           <li class="price">$199</li>
-       </ul>
-   </div>
-</div>
-</div>
-<div class="col-md-4 ftco-animate">
-  <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
-        <span class="price">Software</span>
-    </a>
-    <div class="text p-4">
-        <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-        <p class="advisor">Advisor <span>Tony Garret</span></p>
-        <ul class="d-flex justify-content-between">
-           <li><span class="flaticon-shower"></span>2300</li>
-           <li class="price">$199</li>
-       </ul>
-   </div>
-</div>
-</div>
-<div class="col-md-4 ftco-animate">
-  <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
-        <span class="price">Software</span>
-    </a>
-    <div class="text p-4">
-        <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-        <p class="advisor">Advisor <span>Tony Garret</span></p>
-        <ul class="d-flex justify-content-between">
-           <li><span class="flaticon-shower"></span>2300</li>
-           <li class="price">$199</li>
-       </ul>
-   </div>
-</div>
-</div>
-</div>
-</div>
-</section> -->
 
 <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);">
  <div class="overlay"></div>
@@ -289,10 +139,8 @@
 </div>
 </section>
 
-
-
 <section class="ftco-section testimony-section bg-light">
-   <div class="overlay" style="background-image: url(images/work-1.jpg);"></div>
+   <div class="overlay" style="background-image: url(/images/work-1.jpg);"></div>
    <div class="container">
     <div class="row pb-4">
       <div class="col-md-7 heading-section ftco-animate">
@@ -305,69 +153,34 @@
     <div class="row ftco-animate">
       <div class="col-md-12">
         <div class="carousel-testimony owl-carousel">
-          <div class="item">
-            <div class="testimony-wrap py-4">
-              <div class="text">
-                 <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </p>
-                <p class="mb-4">"منحة الدراسة في الخارج منحتني الفرصة لتطوير مهاراتي الأكاديمية والعملية، وأصبح لدي الآن آفاق جديدة لتحقيق طموحاتي."</p>
-                <div class="d-flex align-items-center">
-                   <div class="user-img" style="background-image: url(images/fady.jpg)"></div>
-                   <div class="pl-3">
-                      <p class="name">أحمد علي</p>
-                      <span class="position">طالب هندسة</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="item">
-    <div class="testimony-wrap py-4">
-      <div class="text">
-         <p class="star">
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-        </p>
-        <p class="mb-4">"الدراسة في الخارج غيرت حياتي. الفرص التي أتيحت لي هنا لا تقدر بثمن، وأنا ممتن جدًا لمنحة التعليم الدولية."</p>
-        <div class="d-flex align-items-center">
-           <div class="user-img" style="background-image: url(images/ahmed.jpg)"></div>
-           <div class="pl-3">
-              <p class="name">سارة محمد</p>
-              <span class="position">طالبة علوم الحاسوب</span>
-          </div>
-      </div>
-  </div>
-</div>
-</div>
-<div class="item">
-    <div class="testimony-wrap py-4">
-      <div class="text">
-         <p class="star">
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-        </p>
-        <p class="mb-4">"منحة التعليم الدولية منحتني فرصة لا مثيل لها للدراسة في إحدى أفضل الجامعات العالمية وتوسيع آفاقي."</p>
-        <div class="d-flex align-items-center">
-           <div class="user-img" style="background-image: url(images/zidan.jpg)"></div>
-           <div class="pl-3">
-              <p class="name">خالد حسن</p>
-              <span class="position">طالب إدارة أعمال</span>
-          </div>
-      </div>
-  </div>
-</div>
-</div>
+                    @if (Model.reviews.Any())
+                    {
+                        @foreach (var review in Model.reviews)
+                        {
+                            <div class="item">
+                                <div class="testimony-wrap py-4">
+                                    <div class="text">
+                                        <p class="star">
+                                            @for (int i = 1; i <= review.Rating; i++)
+                                            {
+                                                <span class="fa fa-star" style="color: gold;"></span>
+                                            }
+
+                                        </p>
+                                        <p class="mb-4">@review.Message</p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img" style="background-image: url(/Uploads/users/@review.UserPhoto)"></div>
+                                            <div class="pl-3">
+                                                <p class="name">@review.FullName</p>
+                                                <span class="position">طالب @review.DepartmentName</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+            
 </div>
 </div>
 </div>
@@ -379,7 +192,7 @@
  <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-12 text-center">
-          <div class="img" style="background-image: url(images/bg_4.jpg);">
+          <div class="img" style="background-image: url(/images/bg_4.jpg);">
              <div class="overlay"></div>
              <h2>نحن مبادرة "فرص دراسية" لتوفير التعليم الدولي</h2>
              <p>نحن نساعدك على تحقيق حلمك الأكاديمي في الخارج من خلال توفير أفضل المنح الدراسية.</p>

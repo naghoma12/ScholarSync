@@ -18,7 +18,11 @@ namespace ScholarSyncMVC.Repository
 		{
 			return await _conext.Requirements.Include("Scholarship").Where(x=> x.IsDeleted == false && x.Id == id).FirstOrDefaultAsync();
 		}
-
+		
+		public async Task<IEnumerable<Requirements>> RequirementsOfScholarship(int id)
+		{
+			return await _conext.Requirements.Where(x => x.IsDeleted == false && x.ScholarShipId == id).ToListAsync();
+		}
 		public async Task<IEnumerable<Requirements>> GetRequirementsAsync()
 		{
 			return await _conext.Requirements.Include("Scholarship").Where(x => x.IsDeleted == false).ToListAsync();

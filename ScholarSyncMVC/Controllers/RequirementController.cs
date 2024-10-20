@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ScholarSyncMVC.Models;
 using ScholarSyncMVC.Repository.Contract;
@@ -6,6 +7,7 @@ using ScholarSyncMVC.ViewModels;
 
 namespace ScholarSyncMVC.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
     public class RequirementController : Controller
     {
         private readonly IRequirement _requirements;

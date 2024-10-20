@@ -1,0 +1,164 @@
+﻿@model IEnumerable<ReviewVM>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_2.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="home.html">الرئيسية <i class="fa fa-chevron-right"></i></a></span> <span>عنا <i class="fa fa-chevron-right"></i></span></p>
+                <h1 class="mb-0 bread">من نحن</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="ftco-section ftco-about img">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-12 about-intro">
+                <div class="row">
+                    <div class="col-md-6 d-flex">
+                        <div class="d-flex about-wrap">
+                            <div class="img d-flex align-items-center justify-content-center" style="background-image:url(/images/about.jpg);">
+                            </div>
+                            <div class="img-2 d-flex align-items-center justify-content-center" style="background-image:url(/images/bg_4.jpg);">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pl-md-5 py-5">
+                        <div class="row justify-content-start pb-3">
+                            <div class="col-md-12 heading-section ftco-animate">
+                                <span class="subheading">طور مهاراتك واحصل على فرصتك</span>
+                                <h2 class="mb-4">ابدأ تعليمك اليوم مع المنح الدراسية الدولية</h2>
+                                <p>بعيدًا عن حدود الدول، نوفر لك الفرص لتطوير مهاراتك وتحقيق طموحاتك الأكاديمية من خلال مجموعة متنوعة من المنح الدراسية المتميزة في أفضل الجامعات حول العالم. نسعى إلى تزويدك بكل ما تحتاجه للنجاح وتحقيق أحلامك.</p>
+                                <p><a href="contact.html" class="btn btn-primary">تواصل معنا</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="ftco-section testimony-section bg-light">
+    <div class="overlay" style="background-image: url(/images/work-1.jpg);"></div>
+    <div class="container">
+        <div class="row pb-4">
+            <div class="col-md-7 heading-section ftco-animate">
+                <span class="subheading">آراء المستفيدين</span>
+                <h2 class="mb-4">ماذا يقول طلاب المنح الدراسية</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container container-2">
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel">
+                    @if (Model.Any())
+                    {
+                        @foreach (var review in Model)
+                        {
+                            <div class="item">
+                                <div class="testimony-wrap py-4">
+                                    <div class="text">
+                                        <p class="star">
+                                            @for (int i = 1; i <= review.Rating; i++)
+                                            {
+                                                <span class="fa fa-star" style="color: gold;"></span>
+                                            }
+
+                                        </p>
+                                        <p class="mb-4">@review.Message</p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img" style="background-image: url(/Uploads/users/@review.UserPhoto)"></div>
+                                            <div class="pl-3">
+                                                <p class="name">@review.FullName</p>
+                                                <span class="position">طالب @review.DepartmentName</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-intro ftco-section ftco-no-pb">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <div class="img" style="background-image: url(/images/bg_4.jpg);">
+                    <div class="overlay"></div>
+                    <h2>نحن مبادرة "فرص دراسية" لتوفير التعليم الدولي</h2>
+                    <p>نحن نساعدك على تحقيق حلمك الأكاديمي في الخارج من خلال توفير أفضل المنح الدراسية.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section services-section">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-6 heading-section pr-md-5 ftco-animate d-flex align-items-center">
+                <div class="w-100 mb-4 mb-md-0">
+                    <span class="subheading">مرحبًا بكم في فرص دراسية</span>
+                    <h2 class="mb-4">نحن مبادرة تعليمية لتوفير المنح الدولية</h2>
+                    <p>نحن نقدم فرصًا مميزة للطلاب الراغبين في تحقيق أحلامهم الأكاديمية عبر المنح الدراسية العالمية.</p>
+                    <p>بعيدًا عن الصعوبات، نحن نساعدك في الوصول إلى المؤسسات التعليمية العالمية من خلال شبكة مميزة من الشركاء والبرامج الممولة.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+                        <div class="services">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tools"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">محتوى تعليمي عالمي</h3>
+                                <p>نحن نوفر محتوى تعليمي ذو جودة عالية لتطوير مهاراتك.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+                        <div class="services">
+                            <div class="icon icon-2 d-flex align-items-center justify-content-center"><span class="flaticon-instructor"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">معلمين ذوي خبرة عالمية</h3>
+                                <p>تعلم من أفضل المدرسين والمعلمين حول العالم من خلال برامجنا.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+                        <div class="services">
+                            <div class="icon icon-3 d-flex align-items-center justify-content-center"><span class="flaticon-quiz"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">تجربة تعليمية متميزة</h3>
+                                <p>استفد من برامجنا الفريدة التي تتضمن دروسًا ومسابقات عالمية.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+                        <div class="services">
+                            <div class="icon icon-4 d-flex align-items-center justify-content-center"><span class="flaticon-browser"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">احصل على شهادات معتمدة</h3>
+                                <p>احصل على شهادات معترف بها عالميًا بعد اجتياز البرامج التعليمية بنجاح.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

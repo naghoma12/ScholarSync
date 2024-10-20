@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ScholarSyncMVC.Helper;
 using ScholarSyncMVC.Models;
@@ -7,6 +8,7 @@ using ScholarSyncMVC.ViewModels;
 
 namespace ScholarSyncMVC.Controllers
 {
+ //   [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
     public class DepartmentController : Controller
     {
         private readonly IGenericRepository<Department> _department;
