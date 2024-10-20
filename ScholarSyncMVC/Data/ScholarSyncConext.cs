@@ -21,7 +21,25 @@ namespace ScholarSyncMVC.Data
         public DbSet<Scholarship> UserAccount { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
 
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<EduLevel> EduLevels { get; set; } // Add EduLevel DbSet
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure the one-to-many relationship between AppUser and Education
+            modelBuilder.Entity<Education>()
+                .HasOne(e => e.AppUser)
+                .WithMany(u => u.Educations)
+                .HasForeignKey(e => e.AppUserId);
+
+            // Configure the relationship between Education and EduLevel
+            modelBuilder.Entity<Education>()
+                .HasOne(e => e.EduLevel)
+                .WithMany()
+                .HasForeignKey(e => e.EduLevelId);
+        }
 
     }
 }

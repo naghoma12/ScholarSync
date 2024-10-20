@@ -17,9 +17,9 @@ namespace ScholarSyncMVC.Helper
             CreateMap<Department, CounryDeptEditVM>().ReverseMap();
             CreateMap<Country, CounryDeptEditVM>().ReverseMap();
             CreateMap<Requirements, RequirementVM>().ReverseMap();
-
-
-
+            CreateMap<EduLevel, EduLevelVM>().ReverseMap();
+            CreateMap<ProfileVM, AppUser>().ReverseMap();
+            CreateMap<Education, EducationVM>().ReverseMap();
 
         }
     }

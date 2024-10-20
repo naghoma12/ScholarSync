@@ -1,0 +1,119 @@
+﻿@model ProfileVM
+
+<div asp-validation-summary="All"></div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label">الاسم الاول</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label">اسم العائلة</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="BirthDate" class="control-label">تاريخ الميلاد</label>
+            <input asp-for="BirthDate" class="form-control" type="date" />
+            <span asp-validation-for="BirthDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Gender" class="control-label">الجنس</label>
+            <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()">
+                <option value="">اختر الجنس</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">البريد الالكتروني</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label">اسم المستخدم</label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputState">الجنسية</label>
+            <select asp-for="NationalityId" class="form-control" asp-items="@(new SelectList(Model.Nationalities,"Id","Name"))">
+                @{
+                    if(Model.NationalityId!=null)
+                    {
+                        <option value="@Model.NationalityId"> @Model.Nationality</option>
+                    }
+                    else
+                    {
+                        <option value="0">اختر جنسيتك</option>
+                    }
+                }
+                
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="control-label">رقم الهاتف</label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="example-textarea">نبذة عني</label>
+    <textarea class="form-control" asp-for="Description" id="example-textarea" rows="4"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+
+<div class="row">
+    
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputState">المجال الدراسي</label>
+            <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(Model.Departments,"Id","Name"))">
+                @{
+                    if (Model.DepartmentId != null)
+                    {
+                        <option value="@Model.DepartmentId"> @Model.Department</option>
+                    }
+                    else
+                    {
+                        <option value="0">اختر المجال الدراسي</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <label class="control-label fw-bold fs-4">تغيير الصورة الشخصية</label>
+        <input asp-for="PhotoFile" class="form-control form-control-lg" type="file" placeholder="صورة" id="formFile" />
+        <span asp-validation-for="PhotoFile" class="text-danger"></span>
+    </div>
+</div>
+
+

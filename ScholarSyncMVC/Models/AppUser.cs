@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ScholarSyncMVC.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
@@ -21,16 +22,23 @@ namespace ScholarSyncMVC.Models
         
         public DateOnly? BirthDate { get; set; }
 
-        
-        [MaxLength(20, ErrorMessage = "Max 20 characters allowed.")]
-        public string? Nationality { get; set; }
 
-        
-        [MaxLength(250, ErrorMessage = "Max 250 characters allowed.")]
+        public Gender? Gender { get; set; }
+        public string? PhoneNumber {  get; set; }
+
+
+		[MaxLength(250, ErrorMessage = "Max 250 characters allowed.")]
         public string? Description { get; set; }
 
         public string? PhotoURL { get; set; }
         public string? FilePath { get; set; }
+
+        [ForeignKey(nameof(Nationality))]
+        public int? NationalityId { get; set; }
+        public virtual Country? Nationality { get; set; }
+
+
+        public virtual ICollection<Education> Educations { get; set; } = new List<Education>();
 
 
         [ForeignKey(nameof(Department))]

@@ -192,6 +192,9 @@ namespace ScholarSyncMVC.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -203,9 +206,8 @@ namespace ScholarSyncMVC.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Nationality")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int?>("NationalityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -241,6 +243,8 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasIndex("DepartmentId");
 
+                    b.HasIndex("NationalityId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -252,7 +256,7 @@ namespace ScholarSyncMVC.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("ScholarSyncMVC.Models.Application", b =>
+            modelBuilder.Entity("ScholarSyncMVC.Models.Applicationn", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -260,19 +264,169 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AcademicGoals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademicTranscripts_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademicTranscripts_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("AgreeTerms")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("AreaCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CV_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CV_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CulturalActivities")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrentDegreeLevel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FundingSources_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FundingSources_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("GPA")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LanguageProficiencyLevel_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LanguageProficiencyLevel_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Major")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotivationLetter_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotivationLetter_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Passport_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Passport_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PersonalGoals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreviousTravelExperience")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProofOfFinancialAbility_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProofOfFinancialAbility_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProofOfHealthInsurance_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProofOfHealthInsurance_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Recommendationletters_FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Recommendationletters_FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ScholarshipId")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UniversityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UniversityName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -282,11 +436,17 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("DepartmentId");
+
                     b.HasIndex("ScholarshipId");
+
+                    b.HasIndex("UniversityId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Applications");
+                    b.ToTable("Applications", (string)null);
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.Category", b =>
@@ -320,7 +480,7 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.Country", b =>
@@ -351,7 +511,7 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.Department", b =>
@@ -382,7 +542,73 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
+                });
+
+            modelBuilder.Entity("ScholarSyncMVC.Models.EduLevel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EduLevels", (string)null);
+                });
+
+            modelBuilder.Entity("ScholarSyncMVC.Models.Education", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("DidGraduate")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("EduLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EndDate")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Institution")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("StartDate")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("EduLevelId");
+
+                    b.ToTable("Educations", (string)null);
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.Requirements", b =>
@@ -410,7 +636,7 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasIndex("ScholarShipId");
 
-                    b.ToTable("Requirements");
+                    b.ToTable("Requirements", (string)null);
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.Scholarship", b =>
@@ -481,7 +707,7 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("Scholarship");
+                    b.ToTable("Scholarship", (string)null);
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.University", b =>
@@ -509,7 +735,7 @@ namespace ScholarSyncMVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Universities");
+                    b.ToTable("Universities", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -569,14 +795,38 @@ namespace ScholarSyncMVC.Data.Migrations
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
+                    b.HasOne("ScholarSyncMVC.Models.Country", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId");
+
                     b.Navigation("Department");
+
+                    b.Navigation("Nationality");
                 });
 
-            modelBuilder.Entity("ScholarSyncMVC.Models.Application", b =>
+            modelBuilder.Entity("ScholarSyncMVC.Models.Applicationn", b =>
                 {
+                    b.HasOne("ScholarSyncMVC.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ScholarSyncMVC.Models.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ScholarSyncMVC.Models.Scholarship", "Scholarship")
                         .WithMany()
                         .HasForeignKey("ScholarshipId");
+
+                    b.HasOne("ScholarSyncMVC.Models.University", "University")
+                        .WithMany()
+                        .HasForeignKey("UniversityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ScholarSyncMVC.Models.AppUser", "User")
                         .WithMany()
@@ -584,9 +834,34 @@ namespace ScholarSyncMVC.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Country");
+
+                    b.Navigation("Department");
+
                     b.Navigation("Scholarship");
 
+                    b.Navigation("University");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ScholarSyncMVC.Models.Education", b =>
+                {
+                    b.HasOne("ScholarSyncMVC.Models.AppUser", "AppUser")
+                        .WithMany("Educations")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ScholarSyncMVC.Models.EduLevel", "EduLevel")
+                        .WithMany()
+                        .HasForeignKey("EduLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("EduLevel");
                 });
 
             modelBuilder.Entity("ScholarSyncMVC.Models.Requirements", b =>
@@ -633,6 +908,11 @@ namespace ScholarSyncMVC.Data.Migrations
                     b.Navigation("Department");
 
                     b.Navigation("University");
+                });
+
+            modelBuilder.Entity("ScholarSyncMVC.Models.AppUser", b =>
+                {
+                    b.Navigation("Educations");
                 });
 #pragma warning restore 612, 618
         }
