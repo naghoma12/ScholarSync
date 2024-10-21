@@ -36,25 +36,29 @@ namespace ScholarSyncMVC.Controllers
         {
             try
             {
-              
-                var departments = await _department.GetAll();
-                var deptMapped = _mapper.Map<IEnumerable<Department>, IEnumerable<SimpleDept>>(departments);
-                foreach (var dept in deptMapped)
-                {
-                    var Scholarships = await _scholarship.GetAllInDept(dept.Id);
-                    dept.ScholarshipCount = Scholarships.Count();
-                }
                 var Reviews = await _review.GetAllReviews();
 
                 var ReviewMapped = _mapper.Map<IEnumerable<Review>, IEnumerable<ReviewVM>>(Reviews);
                 var Countries = await _country.GetAll();
-                HomeVM homeVM = new HomeVM()
-                {
-                    Departments = deptMapped.ToList(),
-                    countries = Countries.ToList(),
-                   reviews = ReviewMapped
-                };
-                return View(homeVM);
+               
+                var departments = await _department.GetAll();
+                var deptMapped = _mapper.Map<IEnumerable<Department>, IEnumerable<SimpleDept>>(departments);
+                
+                    foreach (var dept in deptMapped)
+                    {
+                        var Scholarships = await _scholarship.GetAllInDept(dept.Id);
+                        dept.ScholarshipCount = Scholarships.Count();
+                    }
+
+                    HomeVM homeVM = new HomeVM()
+                    {
+                        Departments = deptMapped.ToList(),
+                        countries = Countries.ToList(),
+                        reviews = ReviewMapped
+                    };
+                    return View(homeVM);
+                
+               
             }
             catch (Exception ex)
             {

@@ -39,8 +39,8 @@ namespace ScholarSyncMVC.ViewModels
 
     public class applicationnVM
     {
-        public Scholarship? Scholarship { get; set; }
-        public int? ScholarshipId { get; set; }
+       // public Scholarship? Scholarship { get; set; }
+        // public int? ScholarshipId { get; set; }
         /*public AppUser User { get; set; }
 
         //the default in identity for id datatype "string"
@@ -74,7 +74,7 @@ namespace ScholarSyncMVC.ViewModels
         public string City { get; set; }
 
         // Academic Qualifications// unversity mmkn downlist w major
-        public string Major { get; set; }
+       // public string Major { get; set; }
         public decimal GPA { get; set; }
         // m4 3arfa
         public string CurrentDegreeLevel { get; set; }
@@ -84,7 +84,7 @@ namespace ScholarSyncMVC.ViewModels
         public string? AcademicTranscripts_FileName { get; set; }
 
 
-        public IFormFile? LanguageProficiencyLevel { get; set; }
+        public IFormFile LanguageProficiencyLevel { get; set; }
         public string? LanguageProficiencyLevel_FilePath { get; set; }
         public string? LanguageProficiencyLevel_FileName { get; set; }
 

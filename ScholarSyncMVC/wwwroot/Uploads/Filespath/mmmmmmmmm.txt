@@ -1,0 +1,116 @@
+@using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages
+@model IEnumerable<Scholarship>
+@{
+	
+     //   Layout = "~/Views/Shared/_Layout.cshtml"; 
+     Layout = null;
+}
+
+    <section class="hero-wrap hero-wrap-2"
+             style="background-image: url('@Url.Content("~/images/pngtree-scholarship-written-on-blackboard-and-graduation-cap-education-financial-pay-photo-photo-image_38648654.jpg")');">
+
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2">
+                            <a href="home.html">الرئيسية <i class="fa fa-chevron-right"></i></a>
+                        </span>
+                        <span>المنح الدراسية <i class="fa fa-chevron-right"></i></span>
+                    </p>
+                    <h1 class="mb-0 bread">قائمة المنح</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <header class="container" style="margin-top: 50px">
+        <h1 itemprop="headline"
+            class="text-2xl mb-4"
+            style="font-size: 35px; font-weight: 900; text-align: right">
+            منح دراسية
+        </h1>
+        <div class="m-auto flex-col" style="text-align: right">
+            <div class="read-more-container">
+                <div class="transition-max-height duration-500 ease-in-out overflow-hidden max-h-full">
+                    <div data-testid="conversation-turn-27">
+                        <div data-message-author-role="assistant"
+                             data-message-id="1f1c0e3e-f8f0-4789-904a-6e73e9acf07f">
+                            <div data-testid="conversation-turn-27">
+                                <div data-message-author-role="assistant"
+                                     data-message-id="1f1c0e3e-f8f0-4789-904a-6e73e9acf07f">
+                                    <p style="
+                        font-size: 18px;
+                        font-weight: 700;
+                        text-align: right;
+                      ">
+                                        لكل من يسأل كيف يمكنني الحصول على منحة دراسية مجانية؟ فأنت
+                                        في المكان الصحيح لتعرف الإجابة! تقدم منصة فرصتك عدة منح
+                                        دراسية مجانية بالخارج لعام 2024 - 2025 (منح حول العالم)
+                                        للمصريين و الأردنيين و الفلسطينيين و السوريين و المغاربة و
+                                        الجزائريين و اليمنيين و السعوديين و غيرها. كما تتوفّر منح
+                                        دراسية مجانية في مصر و والأردن و العديد من الدول العربية،
+                                        حيث تشمل منح دراسية ممولة بالكامل تغطي الرسوم الدراسية
+                                        وتكاليف السفر والسكن والإقامة، بالإضافة إلى التأمين الصحي
+                                        ورسوم التأشيرة وراتب شهري أي أنَّها منح مجانية للدراسة في
+                                        الخارج. و منح دراسية ممولة جزئيًا تغطي الرسوم الدراسية
+                                        وبعضها يغطي تكاليف السكن أيضًا. تهتم منصة فرصة بتوفير منح
+                                        دراسية مجانية؛ منح بكالوريوس و منح ماجستير و منح دكتوراه
+                                        في أعرق جامعات العالم، كما وتزودك بالمعلومات لـ التقديم
+                                        للمنح الدراسية هذه.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+	
+	
+	
+	
+	
+	
+
+    <section class="ftco-section bg-light">
+	    <div class="container">
+		    <div class="row">
+			    @foreach (var scholarship in Model)
+			    {
+				    <div class="col-md-6 d-flex align-items-stretch ftco-animate">
+					    <div class="project-wrap">
+						    <a asp-controller="Scholarship"
+						       asp-action="Details"
+						       asp-route-id="@scholarship.Id"
+						       class="img"
+						       style="background-image: url('@Url.Content("~/Uploads/scholarship/" + scholarship.PhotoURL)');">
+							    <span class="price">@scholarship.Degree</span>
+						    </a>
+						    <div class="text p-4 text-right">
+							    <h3>
+								    <a asp-controller="Scholarship" 
+								       asp-action="Details" 
+								       asp-route-id="@scholarship.Id">
+									    @scholarship.Name
+								    </a>
+							    </h3>
+							    <p class="deadline">
+								    <span>@scholarship.EndDate.ToString("dd/MM/yyyy")</span> :تاريخ الانتهاء
+							    </p>
+						    </div>
+					    </div>
+				    </div>
+			    }
+		    </div>
+	    </div>
+    </section>
+	
+	
+	
+	
+

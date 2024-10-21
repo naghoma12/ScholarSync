@@ -1,7 +1,7 @@
 ﻿@model HomeVM
 
 
-<div class="hero-wrap js-fullheight d-flex justify-content-center align-items-center" style="background-image: url('images/bg_1.jpg');">
+<div class="hero-wrap js-fullheight d-flex justify-content-center align-items-center" style="background-image: url('images/bg_1.jpg');background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight d-flex justify-content-center align-items-center" data-scrollax-parent="true">
@@ -9,7 +9,7 @@
                 <span class="subheading">مرحبا بك فى فرصتك</span>
                 <h1 class="mb-4">الموقع العربي الذى يمكنك من الحصول على المنح الدراسية وفرص التبادل الثقافى والاقامات</h1>
                 <div style="margin-left: 150px;">
-                    <p class="mb-0"><a href="#" class="btn btn-primary">المنح الدراسيه</a> <a href="#" class="btn btn-white">التبادل الثقافي</a></p>
+                    <p class="mb-0"><a asp-controller="Scholarship" asp-action="viewcardscolarship" class="btn btn-primary">المنح الدراسيه</a> <a asp-controller="Scholarship" asp-action="viewcardExchangeprogram" class="btn btn-white">التبادل الثقافي</a></p>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-            @if(Model.Departments.Count != 0)
+            @if(Model.Departments.Any())
             {
                 @foreach (var department in Model.Departments)
                 {

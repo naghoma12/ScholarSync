@@ -13,7 +13,7 @@ namespace ScholarSyncMVC.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
 
 
-        public RoleController(RoleManager<IdentityRole> roleManager)
+        public RoleController(RoleManager<IdentityRole> roleManager )
         {
             this.roleManager = roleManager;
 
@@ -117,5 +117,7 @@ namespace ScholarSyncMVC.Controllers
 
         }
 
+
+        
     }
 }

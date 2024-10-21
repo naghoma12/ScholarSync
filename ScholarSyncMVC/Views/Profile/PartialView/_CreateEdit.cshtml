@@ -1,0 +1,55 @@
+﻿@model EducationVM
+
+<div asp-validation-summary="All"></div>
+
+           <div class="row">
+              <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="EduLevelId" class="control-label" >المستوى الدراسي</label>
+                <select asp-for="EduLevelId" class="form-control" asp-items="@(new SelectList(Model.eduLevels,"Id","Name"))">
+                <option value="0">اختر المستوى الدراسي</option>
+                </select>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Institution" class="control-label">الهيئة التعليمية</label>
+                <input asp-for="Institution" class="form-control" />
+                <span asp-validation-for="Institution" class="text-danger"></span>
+                 </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label">من سنة</label>
+                <input asp-for="StartDate" type="number" min="1900" max="2100" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+                 </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label">الى سنة</label>
+                <input asp-for="EndDate" type="number" min="1900" max="2100" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+                 </div>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+            <div class="form-group">
+    
+    <input asp-for="DidGraduate" type="checkbox"  />
+    <span asp-validation-for="DidGraduate" class="text-danger"></span>
+    <label asp-for="DidGraduate" class="control-label">خريج؟</label>
+</div>
+</div>
+                </div>
+            
+
+     

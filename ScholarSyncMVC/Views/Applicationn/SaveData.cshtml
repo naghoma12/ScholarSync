@@ -20,13 +20,12 @@
 		        <hr/>
 	        </div>
 
-	        <label for="firstname" class="formbold-form-label"> Name </label>
+	        <label for="FirstName" class="formbold-form-label"> Name </label>
 
 	        <div>
 		        <input asp-for="FirstName"
 		               placeholder="First name"
 		               class="formbold-form-input"/>
-
 
 		        <input asp-for="LastName"
 		               placeholder="Last name"
@@ -54,12 +53,12 @@
 	        <div class="formbold-mb-3">
 		        <label asp-for="Gender" class="formbold-form-label"></label>
 		        <select asp-for="Gender" class="formbold-form-input" asp-items="Html.GetEnumSelectList<Gender>()">
-			        <option value="">Select Gender</option>
+			        <option value="0">Select Gender</option>
 		        </select>
 	        </div>
 
 	        <div class="formbold-mb-3">
-		        <label asp-for="Email" class="formbold-form-label"></label>
+					<label asp-for="Email" class="formbold-form-label"></label>
 		        <input asp-for="Email" class="formbold-form-input" placeholder="example@email.com"/>
 	        </div>
 
@@ -67,7 +66,7 @@
 
 
         <div class="formbold-mb-3">
-	        <label asp-for="StreetAddress" class="formbold-form-label"></label>
+				<label asp-for="StreetAddress" class="formbold-form-label"></label>
 
 	        <input asp-for="StreetAddress" placeholder="Street address" class="formbold-form-input formbold-mb-3"/>
 	        <input asp-for="StreetAddressLine2" placeholder="Street address line 2" class="formbold-form-input"/>
@@ -82,27 +81,26 @@
 			        <option value="">Select Area Code</option>
 		        </select>
 
-		        <input asp-for="PhoneNumber"
+					<input asp-for="PhoneNumber"
 		               placeholder="Phone number"
 		               class="formbold-form-input"/>
 	        </div>
 
 	        <div class="formbold-input-flex">
 		        <div>
-			        <label for="CountryId" class="formbold-form-label">Country Name</label>
+			        <label asp-for="CountryId" class="formbold-form-label">Country Name</label>
 			        <select asp-for="CountryId" class="formbold-form-input" asp-items="@(new SelectList(Model.Countries, "Id", "Name"))">
-				        <option value="0">Choose Country Name</option>
+				        <option value="">Choose Country Name</option>
 			        </select>
-					
+	
 
 		        </div>
 		        <div>
-			        <label for="city" class="formbold-form-label"> City </label>
-			        <input type="text"
-			               name="city"
-			               id="city"
-			               placeholder="ex: Cairo"
-			               class="formbold-form-input"/>
+			        <label asp-for="City" class="formbold-form-label"></label>
+			        <input asp-for="City" 
+			               placeholder="ex: Cairo" 
+			               class="formbold-form-input" />
+			        <span asp-validation-for="City" class="text-danger"></span>
 		        </div>
 	        </div>
         </div>
@@ -127,11 +125,14 @@
 		        </div>
 
 		        <div class="formbold-mb-3">
-			        <label asp-for="Major" class="formbold-form-label">
-			        </label>
-			        <input asp-for="Major"
-			               placeholder="ex: Computer Science"
-			               class="formbold-form-input"/>
+			      
+			        <label for="inputState" class="formbold-form-label">Department Name</label>
+			        <select asp-for="DepartmentId" class="formbold-form-input" asp-items="@(new SelectList(Model.Departments,"Id","Name"))">
+				        <option value="0" disabled selected>Choose Department Name</option>
+			        </select>
+
+			       
+
 		        </div>
 	        </div>
 
@@ -146,6 +147,8 @@
 		        <div class="formbold-mb-3">
 			        <label asp-for="CurrentDegreeLevel" class="formbold-form-label">Current Degree Level:</label>
 			        <select asp-for="CurrentDegreeLevel" class="formbold-form-input">
+				        <option value="">Select Degree</option>
+
 				        <option value="Bachelor">Bachelor</option>
 				        <option value="Master">Master</option>
 				        <option value="Doctorate">Doctorate</option>
@@ -245,7 +248,7 @@
 
 	        <div class="formbold-input-flex">
 		        <div>
-			        <label for="previousExperience" class="formbold-form-label">
+						<label for="PreviousTravelExperience" class="formbold-form-label">
 				        Previous Travel or Exchange Experience
 			        </label>
 			        <textarea asp-for="PreviousTravelExperience"
@@ -258,7 +261,7 @@
 			        <span asp-validation-for="PreviousTravelExperience" class="text-danger"></span>
 		        </div>
 		        <div>
-			        <label for="culturalActivities" class="formbold-form-label">
+						<label for="CulturalActivities" class="formbold-form-label">
 				        Cultural or Volunteer Activities
 			        </label>
 			        <textarea asp-for="CulturalActivities"

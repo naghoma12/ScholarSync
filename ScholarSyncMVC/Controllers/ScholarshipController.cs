@@ -37,7 +37,7 @@ namespace ScholarSyncMVC.Controllers
             _environment = environment;
             _requirement = requirement;
         }
-        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
+       [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public async Task<IActionResult> Index()
         {
             var list = await _scholarship.GetAllWithTables();
@@ -53,7 +53,7 @@ namespace ScholarSyncMVC.Controllers
             var itemMapped = _mapper.Map<Scholarship, ScholarshipVM>(item);
             return View(itemMapped);
         }
-      //  [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
+       [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -74,6 +74,7 @@ namespace ScholarSyncMVC.Controllers
         // POST: University/Create
         [HttpPost]
        [ValidateAntiForgeryToken]
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public IActionResult Create(ScholarshipVM scholarshipVM)
         {
 	        if (ModelState.IsValid)
@@ -141,6 +142,7 @@ namespace ScholarSyncMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public async Task<IActionResult> Edit(ScholarshipVM scholarshipVM)
         {
             if (ModelState.IsValid)
@@ -190,6 +192,7 @@ namespace ScholarSyncMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = ("Admin"))]
         public IActionResult Delete(int id ,ScholarshipVM scholarshipVM)
         {
 			try
@@ -263,7 +266,7 @@ namespace ScholarSyncMVC.Controllers
 
         }
 
-    [Authorize(AuthenticationSchemes = "Cookies")]
+   // [Authorize(AuthenticationSchemes = "Cookies")]
         public async Task<IActionResult> ScholarshipDetails(int id)
         {
             var scholarship = await _scholarship.GetByIdInclude(id);
