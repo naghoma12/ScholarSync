@@ -69,11 +69,10 @@ namespace ScholarSyncMVC.Controllers
             {
                 try
                 {
-                    var AppMapped = _mapper.Map<applicationnVM, Applicationn>(applicationnVM);
 
                     #region IFELSe
+                    applicationnVM.AcademicTranscripts_FileName = applicationnVM.AcademicTranscripts.FileName;
 
-                    applicationnVM.AcademicTranscripts_FileName = applicationnVM.AcademicTranscripts?.FileName;
                     applicationnVM.LanguageProficiencyLevel_FileName = applicationnVM.LanguageProficiencyLevel?.FileName;
                     applicationnVM.CV_FileName = applicationnVM.CV?.FileName;
                     applicationnVM.MotivationLetter_FileName = applicationnVM.MotivationLetter?.FileName;
@@ -83,45 +82,45 @@ namespace ScholarSyncMVC.Controllers
                     applicationnVM.ProofOfFinancialAbility_FileName = applicationnVM.ProofOfFinancialAbility?.FileName;
                     applicationnVM.FundingSources_FileName = applicationnVM.FundingSources?.FileName;
                     applicationnVM.ProofOfHealthInsurance_FileName = applicationnVM.ProofOfHealthInsurance?.FileName;
+
                     if (applicationnVM.AcademicTranscripts != null)
                     {
+
                         applicationnVM.AcademicTranscripts_FileName =
                             DocumentSetting.UploadFile(applicationnVM.AcademicTranscripts, "Filespath");
-                        AppMapped.AcademicTranscripts_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.AcademicTranscripts_FileName);
-
+                        applicationnVM.AcademicTranscripts_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.AcademicTranscripts_FileName);
                     }
                     else
                     {
                         ModelState.AddModelError("Filepath", "Please Enter File");
                     }
-
 
                     if (applicationnVM.LanguageProficiencyLevel != null)
                     {
 
                         applicationnVM.LanguageProficiencyLevel_FileName =
                             DocumentSetting.UploadFile(applicationnVM.LanguageProficiencyLevel, "Filespath");
-                        AppMapped.LanguageProficiencyLevel_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.LanguageProficiencyLevel_FileName);
+                        applicationnVM.LanguageProficiencyLevel_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.LanguageProficiencyLevel_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     if (applicationnVM.CV != null)
                     {
 
 
                         applicationnVM.CV_FileName = DocumentSetting.UploadFile(applicationnVM.CV, "Filespath");
-                        AppMapped.CV_FilePath = Path.Combine(_environment.ContentRootPath, "wwwroot\\Filespath",
-                            AppMapped.CV_FileName);
+                        applicationnVM.CV_FilePath = Path.Combine(_environment.ContentRootPath, "wwwroot\\Uploads\\Filespath",
+                            applicationnVM.CV_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     if (applicationnVM.MotivationLetter != null)
                     {
@@ -129,13 +128,13 @@ namespace ScholarSyncMVC.Controllers
 
                         applicationnVM.MotivationLetter_FileName =
                             DocumentSetting.UploadFile(applicationnVM.MotivationLetter, "Filespath");
-                        AppMapped.MotivationLetter_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.MotivationLetter_FileName);
+                        applicationnVM.MotivationLetter_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.MotivationLetter_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     if (applicationnVM.Recommendationletters != null)
                     {
@@ -144,13 +143,13 @@ namespace ScholarSyncMVC.Controllers
 
                         applicationnVM.Recommendationletters_FileName =
                             DocumentSetting.UploadFile(applicationnVM.Recommendationletters, "Filespath");
-                        AppMapped.Recommendationletters_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.Recommendationletters_FileName);
+                        applicationnVM.Recommendationletters_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.Recommendationletters_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     if (applicationnVM.Passport != null)
                     {
@@ -159,13 +158,13 @@ namespace ScholarSyncMVC.Controllers
 
                         applicationnVM.Passport_FileName =
                             DocumentSetting.UploadFile(applicationnVM.Passport, "Filespath");
-                        AppMapped.Passport_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.Passport_FileName);
+                        applicationnVM.Passport_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.Passport_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     if (applicationnVM.ProofOfFinancialAbility != null)
                     {
@@ -174,13 +173,13 @@ namespace ScholarSyncMVC.Controllers
 
                         applicationnVM.ProofOfFinancialAbility_FileName =
                             DocumentSetting.UploadFile(applicationnVM.ProofOfFinancialAbility, "Filespath");
-                        AppMapped.ProofOfFinancialAbility_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.ProofOfFinancialAbility_FileName);
+                        applicationnVM.ProofOfFinancialAbility_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.ProofOfFinancialAbility_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     if (applicationnVM.FundingSources != null)
                     {
@@ -189,28 +188,31 @@ namespace ScholarSyncMVC.Controllers
 
                         applicationnVM.FundingSources_FileName =
                             DocumentSetting.UploadFile(applicationnVM.FundingSources, "Filespath");
-                        AppMapped.FundingSources_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.FundingSources_FileName);
+                        applicationnVM.FundingSources_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.FundingSources_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     if (applicationnVM.ProofOfHealthInsurance != null)
                     {
 
                         applicationnVM.ProofOfHealthInsurance_FileName =
                             DocumentSetting.UploadFile(applicationnVM.ProofOfHealthInsurance, "Filespath");
-                        AppMapped.ProofOfHealthInsurance_FilePath = Path.Combine(_environment.ContentRootPath,
-                            "wwwroot\\Filespath", AppMapped.ProofOfHealthInsurance_FileName);
+                        applicationnVM.ProofOfHealthInsurance_FilePath = Path.Combine(_environment.ContentRootPath,
+                            "wwwroot\\Uploads\\Filespath", applicationnVM.ProofOfHealthInsurance_FileName);
                     }
-                    else
-                    {
-                        ModelState.AddModelError("Filepath", "Please Enter File");
-                    }
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Filepath", "Please Enter File");
+                    //}
 
                     #endregion
+
+
+                    var AppMapped = _mapper.Map<applicationnVM, Applicationn>(applicationnVM);
 
 
 
