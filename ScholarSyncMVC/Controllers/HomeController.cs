@@ -33,6 +33,7 @@ namespace ScholarSyncMVC.Controllers
         }
         // [Authorize(AuthenticationSchemes = "Cookies")]
         public async Task<IActionResult> Index()
+        
         {
             try
             {
@@ -42,7 +43,8 @@ namespace ScholarSyncMVC.Controllers
                 var Countries = await _country.GetAll();
                
                 var departments = await _department.GetAll();
-                var deptMapped = _mapper.Map<IEnumerable<Department>, IEnumerable<SimpleDept>>(departments);
+
+                var deptMapped = _mapper.Map<IEnumerable<Department>, IEnumerable<SimpleDept>>(departments.Take(6));
                 
                     foreach (var dept in deptMapped)
                     {

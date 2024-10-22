@@ -252,7 +252,7 @@ namespace ScholarSyncMVC.Controllers
                 return Content("No scholarships found.");
             }
 
-            var filteredList = list.Where(s => s.CategoryId == 3).ToList();
+            var filteredList = list.Where(s => s.CategoryId == 2).ToList();
 
             var paginatedList = filteredList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
@@ -265,8 +265,29 @@ namespace ScholarSyncMVC.Controllers
 
 
         }
+        public async Task<IActionResult> viewschinDept(int DeptId ,int page = 1, int pageSize = 4 )
+        {
 
-   // [Authorize(AuthenticationSchemes = "Cookies")]
+            var list = await _scholarship.GetAllWithTables();
+
+            if (list == null || !list.Any())
+            {
+                return Content("No scholarships found.");
+            }
+
+            var filteredList = list.Where(s => s.DepartmentId == DeptId).ToList();
+
+            var paginatedList = filteredList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.TotalPages = (int)Math.Ceiling((double)filteredList.Count() / pageSize);
+            ViewBag.CurrentPage = page;
+            ViewBag.CategoryId = 2;
+
+            return View("viewcardscolarship", paginatedList);
+
+        }
+
+        // [Authorize(AuthenticationSchemes = "Cookies")]
         public async Task<IActionResult> ScholarshipDetails(int id)
         {
             var scholarship = await _scholarship.GetByIdInclude(id);

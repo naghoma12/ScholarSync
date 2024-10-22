@@ -11,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ScholarSyncMVC.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Cookies"]
+    [Authorize(AuthenticationSchemes = "Cookies")]
     public class ApplicationnController : Controller
     {
 

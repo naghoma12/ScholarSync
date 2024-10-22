@@ -14,13 +14,15 @@ namespace ScholarSyncMVC.Controllers
         private readonly IGenericRepository<Department> _department;
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _environment;
+        private readonly IScholarship _scholarship;
 
         public DepartmentController(IGenericRepository<Department> department,IMapper mapper
-            ,IWebHostEnvironment environment)
+            ,IWebHostEnvironment environment , IScholarship scholarship)
         {
             _department = department;
            _mapper = mapper;
             _environment = environment;
+            _scholarship = scholarship;
         }
         public async Task<IActionResult> Index()
         {
@@ -163,5 +165,21 @@ namespace ScholarSyncMVC.Controllers
                 return View(departmentVm);
             }
         }
+
+
+        public async Task<IActionResult> GetAllDept()
+        {
+            var departments = await _department.GetAll();
+
+            var deptMapped = _mapper.Map<IEnumerable<Department>, IEnumerable<SimpleDept>>(departments);
+
+            foreach (var dept in deptMapped)
+            {
+                var Scholarships = await _scholarship.GetAllInDept(dept.Id);
+                dept.ScholarshipCount = Scholarships.Count();
+            }
+            return View(deptMapped);
+        }
+
     }
 }
