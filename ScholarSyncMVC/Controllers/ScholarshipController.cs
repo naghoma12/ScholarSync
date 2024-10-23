@@ -301,7 +301,9 @@ namespace ScholarSyncMVC.Controllers
             {
                 sclMapped.requirements.Add(requirement.Requirement);
             }
-            
+            sclMapped.BenefitsItems = sclMapped.Benefits?.Split('.');
+            sclMapped.HowToAppltItems = sclMapped.HowToApply?.Split('.');
+
             return View(sclMapped);
             
         }

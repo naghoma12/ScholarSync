@@ -25,7 +25,7 @@
     </style>
     <section class="hero-wrap hero-wrap-2"
              style="
-        background-image: url('/Uploads/scholarship/s1.jfif');
+        background-image: url('/Uploads/scholarship/@Model.PhotoURL');
       ">
         <div class="overlay"></div>
         <div class="container">
@@ -33,7 +33,7 @@
                 <div class="col-md-9 ftco-animate pb-5 text-center">
                     <p class="breadcrumbs">
                         <span class="mr-2">
-                            <a href="home.html">الرئيسية <i class="fa fa-chevron-right"></i></a>
+                            <a asp-controller="Home" asp-action="Index">الرئيسية <i class="fa fa-chevron-right"></i></a>
                         </span>
                         <span>المنح الدراسية <i class="fa fa-chevron-right"></i></span>
                     </p>
@@ -43,7 +43,7 @@
         </div>
     </section>
 
-
+    
 
 
     <!-- <section class="">
@@ -51,6 +51,7 @@
     </section> -->
     <div class="container flex flex-col gap-2" style="background-color: #f5f5f5; padding: 30px;  width: 100%; max-width: none;">
         <div class="md:max-w-1/2" style="text-align: right; font-size: 24px;">
+        <div style="height:50px"></div>
             <h1 itemprop="headline"
                 class="text-2xl md:text-4xl font-[700] mb-4 leading-10 ruqaa"
                 style="font-size: 40px; font-weight: 700;">
@@ -79,8 +80,8 @@
                 </div>
             </div>
 
-            <div style="color: red; font-size: 16px; font-weight: bolder; margin-right: 20px;">
-                <span>تاريخ انتهاء الفرصة:</span> <span>@Model.EndDate</span>
+            <div style="color: red; font-size: 16px; font-weight: bolder; margin-right: 20px; margin-top: 10px;">
+            <span>تاريخ انتهاء الفرصة:</span> <span>@Model.EndDate.ToString("dd/MM/yyyy")</span>
             </div>
         </div>
 
@@ -179,19 +180,16 @@
                     الفوائد والمنافع
                 </h1>
                 <div class="content ">
-                    <p style="
-        font-size: 18px;
-        text-align: right;
-        line-height: 1.8;
-        padding-left: 20%;
-          ">
-                       @Model.Benefits
-                    </p>
-
+                    <ul class="align-right-list">
+                        @for(int i = 0; i < Model.BenefitsItems?.Length - 1; i++)
+                        {
+                            <li class="align-right" style="font-size:18px;">@Model.BenefitsItems[i]</li>
+                        }
+                    </ul>
                 </div>
             </section>
         }
-        @if (Model.requirements.Count != 0)
+        @if (Model.requirements.Any())
         {
             <section 
                      style="
@@ -239,15 +237,12 @@
                    كيفية التقديم
                 </h1>
                 <div class="content ">
-                    <p style="
-        font-size: 18px;
-        text-align: right;
-        line-height: 1.8;
-        padding-left: 20%;
-          ">
-                        @Model.HowToApply
-                    </p>
-
+                    <ul class="align-right-list">
+                        @for (int i = 0; i < Model.HowToAppltItems?.Length - 1; i++)
+                        {
+                            <li class="align-right" style="font-size:18px;">@Model.HowToAppltItems[i]</li>
+                        }
+                    </ul>
                 </div>
             </section>
         }

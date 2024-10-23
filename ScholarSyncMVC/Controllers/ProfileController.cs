@@ -64,7 +64,7 @@ namespace ScholarSyncMVC.Controllers
                 ProfileVM profile=_mapper.Map<AppUser,ProfileVM>(user);
               
 
-                return View(profile);
+                return PartialView(profile);
             }
         }
 

@@ -19,6 +19,8 @@
         public string? HowToApply { get; set; }
         public string? Benefits { get; set; }
         public string PhotoURL { get; set; }
-        public List<string> requirements { get; set; } = new List<string>();
+        public string[]? BenefitsItems { get; set; } = new string[0];
+        public string[]? HowToAppltItems { get; set; } = new string[0];
+        public List<string?> requirements { get; set; } = new List<string?>();
     }
 }

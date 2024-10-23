@@ -4,4 +4,78 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<h3> Welcome to Scholarsync Dashboard</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Dashboard</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width:100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f4f8;
+        }
+        .welcome-container {
+            text-align: center;
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            display: center;
+        }
+        h1 {
+            font-size: 48px;
+            color: #7E60BF;
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        p {
+            font-size: 20px;
+            color: #2c3e50;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .welcome-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #7E60BF;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            
+        }
+        .welcome-button:hover {
+            background-color: #2980b9;
+        }
+      
+    </style>
+</head>
+<body>
+
+    <div class="hero-wrap js-fullheight d-flex justify-content-center align-items-center h-100" style="background-image: url('/images');background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight d-flex justify-content-center align-items-center" data-scrollax-parent="true">
+                <div class="col-md-7 ftco-animate mt-5">
+                    <h1 class="mb-4">Your journey starts here. Explore your opportunities and manage everything with ease!</h1>
+                    <a asp-controller="Home" asp-action="Index" class="welcome-button">Go Back to website</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+</body>
+</html>
