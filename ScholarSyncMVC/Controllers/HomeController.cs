@@ -37,9 +37,7 @@ namespace ScholarSyncMVC.Controllers
         {
             try
             {
-                var Reviews = await _review.GetAllReviews();
-
-                var ReviewMapped = _mapper.Map<IEnumerable<Review>, IEnumerable<ReviewVM>>(Reviews);
+                
                 var Countries = await _country.GetAll();
                
                 var departments = await _department.GetAll();
@@ -51,8 +49,10 @@ namespace ScholarSyncMVC.Controllers
                         var Scholarships = await _scholarship.GetAllInDept(dept.Id);
                         dept.ScholarshipCount = Scholarships.Count();
                     }
+                var Reviews = await _review.GetAllReviews();
 
-                    HomeVM homeVM = new HomeVM()
+                var ReviewMapped = _mapper.Map<IEnumerable<Review>, IEnumerable<ReviewVM>>(Reviews);
+                HomeVM homeVM = new HomeVM()
                     {
                         Departments = deptMapped.ToList(),
                         countries = Countries.ToList(),

@@ -33,7 +33,7 @@
                                 <span class="subheading">طور مهاراتك واحصل على فرصتك</span>
                                 <h2 class="mb-4">ابدأ تعليمك اليوم مع المنح الدراسية الدولية</h2>
                                 <p>بعيدًا عن حدود الدول، نوفر لك الفرص لتطوير مهاراتك وتحقيق طموحاتك الأكاديمية من خلال مجموعة متنوعة من المنح الدراسية المتميزة في أفضل الجامعات حول العالم. نسعى إلى تزويدك بكل ما تحتاجه للنجاح وتحقيق أحلامك.</p>
-                                <p><a href="contact.html" class="btn btn-primary">تواصل معنا</a></p>
+                                <p><a asp-controller="Home" asp-action="ContactUs" class="btn btn-primary">تواصل معنا</a></p>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                                         </p>
                                         <p class="mb-4">@review.Message</p>
                                         <div class="d-flex align-items-center">
-                                            <div class="user-img" style="background-image: url(/Uploads/users/@review.UserPhoto)"></div>
+                                            <div class="user-img" style="background-image: url(/Uploads/User/@review.UserPhoto)"></div>
                                             <div class="pl-3">
                                                 <p class="name">@review.FullName</p>
                                                 <span class="position">طالب @review.DepartmentName</span>

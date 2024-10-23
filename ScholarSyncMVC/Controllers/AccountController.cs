@@ -113,6 +113,12 @@ namespace ScholarSyncMVC.Controllers
                    
                     if(found.Succeeded)
                     {
+                        if(role.Count == 0)
+                        {
+                           
+                                role = new string[] { "User" };
+                            
+                        }
 
                         List<Claim>? claims = new List<Claim>()
                     {
